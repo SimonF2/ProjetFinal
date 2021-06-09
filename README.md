@@ -1,5 +1,7 @@
 
 Projet de Fin de Formation
+
+
 L’objectif de ce projet est de concevoir une Station Météo. Cette Station Météo permettra de fournir certaines informations. Les fonctionnalités demandées seront détaillées par la suite. 
 
 On souhaite afficher sur cette station Météo des informations météorologiques de 2 points géographiques différents : 
@@ -8,8 +10,6 @@ On souhaite afficher sur cette station Météo des informations météorologiques de
       - d'une ville choisie 
 
 Dans un premier temps, nous détaillerons le matériel mis à disposition. Dans un second temps, nous citerons les différentes fonctionnalités attendues. Enfin, vous aurez quelques informations sur la présentation à effectuer le jour de la soutenance.
-
-
 
 
 Cette balise positionnée en plein coeur de la Mer est équipée des éléments suivants : 
@@ -51,6 +51,7 @@ Afin de disposer de ces données, vous avez la possibilité de vous y connecter vi
 De plus, vous proposerez une solution permettant d'afficher les informations météorologiques à partir d'une ville choisie. Vous justifierez la solution pour laquelle vous avez optée. 
 
 Afin de bien définir les éléments attendus au niveau de l'interface graphique de la Station Météo, voici la liste des fonctionnalités requises : 
+
 - Affichage de l'heure et de la date 
 
 - Au niveau de la balise située en Mer : 
@@ -61,7 +62,7 @@ Afin de bien définir les éléments attendus au niveau de l'interface graphique de
 
 
 - Au niveau de la température de la ville : 
-      o Température en °C/°F de -40°C à 50°C 
+ o Température en °C/°F de -40°C à 50°C 
  o Résolution : 0.1°C relevé toutes les minutes 
  o Gestion de l’affichage de pictogrammes associés 
  o Affichage de la Ville 
@@ -70,22 +71,24 @@ Afin de bien définir les éléments attendus au niveau de l'interface graphique de
 
 Par ailleurs, on disposera d’une interface « Administration » permettant de configurer certains paramètres :
 	
-> Section Affichage : 
-? Format de l’heure 12 ou 24H
-? Choix de la Ville
-? Unité de Température Fahrenheit ou Celsius
-? Possibilité de choisir les styles d’affichage :
+-> Section Affichage : 
+- Format de l’heure 12 ou 24H
+- Choix de la Ville
+- Unité de Température Fahrenheit ou Celsius
+- Possibilité de choisir les styles d’affichage :
 - Famille de Police
 - Couleur
-o Chaque style sera décliné en Mode Jour/Nuit
-      ? Choix de la langue :
-- Anglais
-- Français
+	o Chaque style sera décliné en Mode Jour/Nuit
+- Choix de la langue :
+	o Anglais
+	o Français
 
 
 Facultatif : 
 
 S'il vous reste du temps, vous enregistrerez toutes les heures les informations de la balise au sein d'une base de données. Le but sera d'afficher la température moyenne des 12 dernières heures et de l'afficher au sein de votre station.
+
+
 
 
 
@@ -95,12 +98,5 @@ Vous constituerez une présentation (PowerPoint ou équivalent) qui vous servira d
 
 
 
-Informations Techniques : 
-
-Branchements du Capteur BME280 sur le Raspberry :
-
-
-
-1
 
 
