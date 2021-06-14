@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     dialogoptions.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    parametres.cpp
 
 HEADERS += \
     dialogoptions.h \
-    mainwindow.h
+    mainwindow.h \
+    parametres.h
 
 FORMS += \
     dialogoptions.ui \
@@ -25,3 +27,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    weatherinfos.qrc

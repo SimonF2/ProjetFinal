@@ -4,8 +4,10 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QCloseEvent>
+#include <QLabel>
 
 #include "dialogoptions.h"
+#include "parametres.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,8 +22,11 @@ public:
     ~MainWindow();
     void affDate();
 
+
 protected:
     void closeEvent(QCloseEvent *event);
+
+
 
 private slots:
     void affHeure();

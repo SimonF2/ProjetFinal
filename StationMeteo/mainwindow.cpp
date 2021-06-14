@@ -11,6 +11,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QResource>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,13 +22,19 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("Station Météo de Mehdi et Simon");
 
 
-
     affDate();
+
     affHeure(); // Affiche l'heure dès la première seconde
     timer = new QTimer();
     timer->setInterval(1000); //1000ms = 1 sec
     timer->start();
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
+
+    parametres Options;
+    qDebug()<<"Premier test : " + Options.getPolice().toString();
+    qDebug()<<"Bouton : " + ui->BtnMeteo->font().toString();
+
+
 
 }
 
@@ -40,17 +47,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::affHeure()
 {
-    QDateTime Heure =  QDateTime::currentDateTime();
-
-    ui->lblHeure->setText(Heure.toString("hh:mm:ss"));
-    if (ui->rdBtn24->isChecked())
-    {
-        ui->lblHeure->setText(Heure.toString("hh:mm:ss"));
-    }
-    else if (ui->rdBtn12->isChecked())
-    {
-        ui->lblHeure->setText(Heure.toString("h:m:s ap"));
-    }
+   ui->lblHeure->setText(parametres::getHeure());
 }
 
 
@@ -59,7 +56,6 @@ void MainWindow::affDate()
     QDateTime Date = QDateTime::currentDateTime();
     ui->lblDate->setText(Date.toString("dddd dd MMMM yyyy"));
 }
-
 
 
 void MainWindow::on_BtnMeteo_clicked()
@@ -105,12 +101,15 @@ void MainWindow::on_BtnMeteo_clicked()
     QJsonArray weather = jsonObject["weather"].toArray();
 
     QString description;
+    QString codeIcon;
     foreach(const QJsonValue &value, weather)
     {
         QJsonObject obj = value.toObject();
         //qDebug() << "description : " << obj["description"].toString();
         description=obj["description"].toString();
-        qDebug() << "Code icône : " << obj["icon"].toString();
+        qDebug() << "CodeIcon : " << obj["icon"].toString();
+        codeIcon= obj["icon"].toString();
+
     }
 
 
@@ -139,6 +138,28 @@ void MainWindow::on_BtnMeteo_clicked()
             arg(temperature).arg(tempressentie).arg(pression).arg(humidite);
     qDebug()<<infosRecap;
     ui->plainTextMeteo->setPlainText(infosRecap);
+
+
+    //affichage icone
+    ui->lbliconmeteo->setScaledContents(true);
+    if (codeIcon=="01d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/01d_soleil.png").fileName());
+    else if (codeIcon=="02d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/02d_nuageux.png").fileName());
+    else if (codeIcon=="03d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/03d_couvert.png").fileName());
+    else if (codeIcon=="04d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/04d_pluvieux.png").fileName());
+    else if (codeIcon=="09d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/09d_fortes_pluies.png").fileName());
+    else if (codeIcon=="10d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/10d_soleil_pluies.png").fileName());
+    else if (codeIcon=="11d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/11d_orages.png").fileName());
+    else if (codeIcon=="13d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/13d_neige.png").fileName());
+    else if (codeIcon=="50d")
+    ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/50d_Brouillard.png").fileName());
 
 }
 
