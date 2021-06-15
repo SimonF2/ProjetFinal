@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>icons/03d_couvert.png</file>
-        <file>icons/04d_pluvieux.png</file>
-        <file>icons/09d_fortes_pluies.png</file>
-        <file>icons/10d_soleil_pluies.png</file>
-        <file>icons/11d_orages.png</file>
-        <file>icons/13d_neige.png</file>
-        <file>icons/50d_Brouillard.png</file>
-        <file>icons/01d_soleil.png</file>
-        <file>icons/02d_nuageux.png</file>
+        <file>icons/01d_clear_sky.png</file>
+        <file>icons/02d_few_clouds.png</file>
+        <file>icons/03d_scattered_clouds.png</file>
+        <file>icons/04d_broken_clouds.png</file>
+        <file>icons/09d_shower_rain.png</file>
+        <file>icons/10d_rain.png</file>
+        <file>icons/11d_thunderstorm.png</file>
+        <file>icons/13d_snow.png</file>
+        <file>icons/50d_mist.png</file>
     </qresource>
 </RCC>

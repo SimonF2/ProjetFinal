@@ -49,7 +49,7 @@ void DialogOptions::on_rdBtn12_clicked()
 
 void DialogOptions::on_rdBtn24_clicked()
 {
-    parametres::setFormatHeure(true);
+     parametres::setFormatHeure(true);
 }
 
 void DialogOptions::on_comboBoxLangue_currentTextChanged(const QString &arg1)
@@ -63,10 +63,26 @@ void DialogOptions::on_BtnPolice_clicked()
     bool ok = false;
     QFont policechoisi = QFontDialog::getFont(&ok, ui->BtnPolice->font(), this, "Choisissez une police");
 
+
+
     if (ok)
     {
-        ui->BtnPolice->setFont(policechoisi);
+        parametres::setPolice(policechoisi);
+        ui->BtnPolice->setFont(parametres::getPolice());
+        //on peut modifier ici la police de tout ce qu'on veut dans dialogoptions
+
+
     }
 
-    parametres::setPolice(policechoisi);
+
+}
+
+void DialogOptions::on_rdBtnC_clicked()
+{
+    parametres::setUnite("Celsius");
+}
+
+void DialogOptions::on_rdBtnFar_clicked()
+{
+    parametres::setUnite("Fahrenheit");
 }

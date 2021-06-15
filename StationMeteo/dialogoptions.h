@@ -24,12 +24,15 @@ private slots:
 
     void on_rdBtn12_clicked();
 
-
     void on_rdBtn24_clicked();
 
     void on_comboBoxLangue_currentTextChanged(const QString &arg1);
 
     void on_BtnPolice_clicked();
+
+    void on_rdBtnC_clicked();
+
+    void on_rdBtnFar_clicked();
 
 private:
     Ui::DialogOptions *ui;
