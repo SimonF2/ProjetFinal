@@ -21,7 +21,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void affDate();
-    void affMeteoville(QString ville, QString unite, QString langue);
+    void affMeteoville();
+    void affPrevisions();
 
 
     void setUnite(const QString &value);
@@ -29,6 +30,7 @@ public:
 
     QString getUnite() const {return unite;}
     QString getLangue() const {return langue;}
+    QString getVilleSelec() const {return villeSelec;}
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -37,20 +39,21 @@ protected:
 
 private slots:
     void affHeure();
+    void affMeteoMer();
     void on_action_Administration_triggered();
     void on_action_Quitter_triggered();
     void on_BtnMeteo_clicked(); //équivalent set ville
 
 
-    void on_BtnPrevisions_clicked();
 
 private:
     Ui::MainWindow *ui;
     DialogOptions* FenetreOptions;
-    QTimer* timer; //Declenche un traitement à intervalle régulier
     QString villeSelec = "Paris";
     QString unite;
     QString langue;
+    QTimer* timer; //Declenche un traitement à intervalle régulier
+    QTimer* timerRasp;
 
 };
 #endif // MAINWINDOW_H

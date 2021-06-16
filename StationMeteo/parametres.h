@@ -10,6 +10,7 @@ class parametres
 public:
     parametres();
 
+    static bool getFormat24Heure();
     static QString getHeure();
     static void setFormatHeure(bool value);
 
@@ -21,6 +22,8 @@ public:
 
     static QString getUnite();
     static void setUnite(QString value);
+
+
 
 private:
     static bool format24Heure;

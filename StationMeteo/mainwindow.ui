@@ -13,19 +13,28 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QLabel" name="lblDate">
     <property name="geometry">
      <rect>
-      <x>679</x>
-      <y>80</y>
-      <width>241</width>
+      <x>670</x>
+      <y>89</y>
+      <width>251</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>13</pointsize>
       <weight>75</weight>
       <bold>true</bold>
       <kerning>true</kerning>
@@ -44,8 +53,8 @@
    <widget class="QPushButton" name="BtnMeteo">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>123</y>
+      <x>728</x>
+      <y>311</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -58,16 +67,16 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>173</y>
+      <y>74</y>
       <width>251</width>
-      <height>481</height>
+      <height>581</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::WinPanel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -77,6 +86,9 @@
     </property>
     <property name="documentTitle">
      <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
     </property>
     <property name="backgroundVisible">
      <bool>false</bool>
@@ -89,7 +101,7 @@
     <property name="geometry">
      <rect>
       <x>99</x>
-      <y>393</y>
+      <y>394</y>
       <width>221</width>
       <height>221</height>
      </rect>
@@ -113,57 +125,24 @@
      <number>0</number>
     </property>
    </widget>
-   <widget class="QLabel" name="lblHeure">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>123</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Heure</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BtnPrevisions">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>360</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Affichage Prévisions</string>
-    </property>
-   </widget>
    <widget class="QPlainTextEdit" name="plainTextMer">
     <property name="geometry">
      <rect>
       <x>670</x>
-      <y>173</y>
+      <y>414</y>
       <width>251</width>
-      <height>481</height>
+      <height>241</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(93, 187, 225);
+</string>
+    </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::WinPanel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
      <number>1</number>
@@ -173,6 +152,12 @@
     </property>
     <property name="documentTitle">
      <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
     <property name="backgroundVisible">
      <bool>false</bool>
@@ -191,16 +176,17 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 127);</string>
+     <string notr="true">background-color: rgb(139, 126, 94);
+</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>1</number>
+     <number>5</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -228,16 +214,17 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 127);</string>
+     <string notr="true">background-color: rgb(139, 126, 94);
+</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>0</number>
+     <number>5</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -265,16 +252,17 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 127);</string>
+     <string notr="true">background-color: rgb(139, 126, 94);
+</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>1</number>
+     <number>5</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -302,16 +290,17 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 127);</string>
+     <string notr="true">background-color: rgb(139, 126, 94);
+</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>1</number>
+     <number>5</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -332,21 +321,27 @@
    <widget class="QLabel" name="labelVille">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>93</y>
-      <width>55</width>
+      <x>736</x>
+      <y>251</y>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ville : </string>
+     <string>Ville Séléctionnée : </string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEditVille">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>93</y>
+      <x>736</x>
+      <y>281</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -355,42 +350,11 @@
      <string>Paris</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="plainTextPrevisions">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>73</y>
-      <width>321</width>
-      <height>581</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
-    </property>
-    <property name="lineWidth">
-     <number>1</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-    <property name="centerOnScroll">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="iconeJ1">
     <property name="geometry">
      <rect>
       <x>589</x>
-      <y>93</y>
+      <y>99</y>
       <width>71</width>
       <height>61</height>
      </rect>
@@ -418,7 +382,7 @@
     <property name="geometry">
      <rect>
       <x>588</x>
-      <y>208</y>
+      <y>215</y>
       <width>71</width>
       <height>61</height>
      </rect>
@@ -446,7 +410,7 @@
     <property name="geometry">
      <rect>
       <x>588</x>
-      <y>323</y>
+      <y>332</y>
       <width>71</width>
       <height>61</height>
      </rect>
@@ -474,7 +438,7 @@
     <property name="geometry">
      <rect>
       <x>588</x>
-      <y>433</y>
+      <y>447</y>
       <width>71</width>
       <height>61</height>
      </rect>
@@ -502,7 +466,7 @@
     <property name="geometry">
      <rect>
       <x>588</x>
-      <y>550</y>
+      <y>564</y>
       <width>71</width>
       <height>61</height>
      </rect>
@@ -526,7 +490,305 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>plainTextPrevisions</zorder>
+   <widget class="QLabel" name="labelTitreMer">
+    <property name="geometry">
+     <rect>
+      <x>675</x>
+      <y>419</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Conditions Météo en Mer :</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextDate">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>73</y>
+      <width>251</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelMer">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>461</y>
+      <width>211</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>130</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <underline>false</underline>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>true</bool>
+    </property>
+    <property name="digitCount">
+     <number>11</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextPrevisions1">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>73</y>
+      <width>321</width>
+      <height>117</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextPrevisions2">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>189</y>
+      <width>321</width>
+      <height>117</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextPrevisions3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>306</y>
+      <width>321</width>
+      <height>117</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextPrevisions4">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>422</y>
+      <width>321</width>
+      <height>117</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextPrevisions5">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>538</y>
+      <width>321</width>
+      <height>117</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>plainTextPrevisions2</zorder>
+   <zorder>plainTextPrevisions1</zorder>
+   <zorder>plainTextPrevisions5</zorder>
+   <zorder>plainTextPrevisions4</zorder>
+   <zorder>plainTextPrevisions3</zorder>
+   <zorder>plainTextDate</zorder>
    <zorder>iconeJ1</zorder>
    <zorder>iconeJ2</zorder>
    <zorder>iconeJ3</zorder>
@@ -537,14 +799,15 @@
    <zorder>lblDate</zorder>
    <zorder>BtnMeteo</zorder>
    <zorder>lbliconmeteo</zorder>
-   <zorder>lblHeure</zorder>
-   <zorder>BtnPrevisions</zorder>
    <zorder>Cadre_2</zorder>
    <zorder>Cadre_4</zorder>
    <zorder>Cadre_3</zorder>
    <zorder>labelVille</zorder>
    <zorder>lineEditVille</zorder>
    <zorder>Cadre_1</zorder>
+   <zorder>labelTitreMer</zorder>
+   <zorder>labelMer</zorder>
+   <zorder>lcdNumber</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

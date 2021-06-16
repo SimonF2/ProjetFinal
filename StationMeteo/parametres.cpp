@@ -68,3 +68,8 @@ void parametres::setUnite(QString value)
         unite = value;
     qDebug()<<"Changement Unite parmetres:"<<getUnite();
 }
+
+bool parametres::getFormat24Heure()
+{
+    return format24Heure;
+}
