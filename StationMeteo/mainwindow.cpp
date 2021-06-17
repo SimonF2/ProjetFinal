@@ -21,7 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-    this->setWindowTitle("Station Météo de Mehdi et Simon");
+    this->setWindowTitle(tr("Station Météo de Mehdi et Simon"));
+
+
     //this->setStyleSheet("border-radius: 5px;");
     //this->setStyleSheet("background-color: black; border-radius: 5px;");
 
@@ -34,7 +36,10 @@ MainWindow::MainWindow(QWidget *parent)
     //qDebug()<<"langue Mainwindow au démarrage:"<<getLangue();
     //qDebug()<<"unite Mainwindow au démarrage:"<<getUnite();
 
+    //--------------------------------------------------------------------
     //Mise à jour des parametres de MainWindow en fonction de la classe parametres
+    this->setFont(parametres::getPolice());
+
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
     else if (parametres::getUnite()=="Fahrenheit")
@@ -46,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug()<<"langue Mainwindow suite MAJ via parametres:"<<getLangue();
     qDebug()<<"unite Mainwindow suite MAJ via parametres:"<<getUnite();
-
+    //--------------------------------------------------------------------
 
     //Affichage Date en continue
     affDate();
@@ -59,15 +64,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
 
     //Affichage des 3 Météos avec maj toutes les 5min
-    affMeteoville();
-    affPrevisions();
-    affMeteoMer();
+    //affMeteoville();
+    //affPrevisions();
+    //affMeteoMer();
     timerRasp = new QTimer();
     timerRasp->setInterval(60000); //5min=300000 msec
     timerRasp->start();
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoMer()));
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoVille()));
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affPrevisions()));
+
 
 
 
@@ -125,6 +131,26 @@ void MainWindow::affDate()
 void MainWindow::affMeteoville()
 {
     qDebug() <<"MAJ MeteoVille";
+    //MAJ de la police de la fenêtre principale
+    this->setFont(parametres::getPolice());
+
+    //MAJ de la police de affMeteoville
+    ui->plainTextMeteo->setFont(parametres::getPolice());
+
+
+    //-----------------------------------
+
+    if (parametres::getUnite()=="Celsius")
+        setUnite("metric");
+    else if (parametres::getUnite()=="Fahrenheit")
+        setUnite("imperial");
+    if (parametres::getLangue()=="Français")
+        setLangue("fr");
+    else if (parametres::getLangue()=="English")
+        setLangue("en");
+
+
+
     //qDebug() << "SSL ? " << QSslSocket::supportsSsl();
     QString villeSelec = getVilleSelec();
     QString unite = getUnite();
@@ -191,9 +217,9 @@ void MainWindow::affMeteoville()
 
     //concaténation et affichage des infos
 
-    QString infosRecap = QString("%1 \nConditions Météo :   \n  %2 "
+    QString infosRecap = QString(tr("%1 \n\nConditions Météo :   \n  %2 "
 "\nTempérature :   \n  %3 \nTempérature Ressentie :   \n  %4 "
-"\nPression atmosphérique (hPa) :   \n  %5 \nTaux d'Humidité (%) :   \n  %6").
+"\nPression atmosphérique (hPa) :   \n  %5 \nTaux d'Humidité (%) :   \n  %6")).
             arg(ville).arg(description).
             arg(temperature).arg(tempressentie).arg(pression).arg(humidite);
     //qDebug()<<infosRecap;
@@ -227,10 +253,22 @@ void MainWindow::affMeteoville()
 
 void MainWindow::on_BtnMeteo_clicked()
 {
-    //qDebug()<<ui->lineEditVille->text();
 
     if (ui->lineEditVille->text()!="")
         villeSelec=ui->lineEditVille->text();
+
+
+    affMeteoville();
+    affPrevisions();
+    affMeteoMer();
+
+}
+
+void MainWindow::affPrevisions()
+{
+    qDebug()<<"MAJ Prévisions";
+
+
 
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
@@ -241,18 +279,8 @@ void MainWindow::on_BtnMeteo_clicked()
     else if (parametres::getLangue()=="English")
         setLangue("en");
 
-    qDebug()<<"langue Mainwindow au moment de cliquer:"<<getLangue();
-    qDebug()<<"unite Mainwindow au moment de cliquer:"<<getUnite();
 
-    affMeteoville();
-    //ui->plainTextPrevisions->clear();
-    affPrevisions();
 
-}
-
-void MainWindow::affPrevisions()
-{
-    qDebug()<<"MAJ Prévisions";
     QString villeSelec = getVilleSelec();
     QString unite = getUnite();
     QString langue = getLangue();
@@ -294,7 +322,7 @@ void MainWindow::affPrevisions()
     QString description;
 
     QString codeIcon [5];
-    //QString infosRecap;
+
     QString infosRecaptab [5];
 
 
@@ -332,17 +360,7 @@ void MainWindow::affPrevisions()
                 description=newobj["description"].toString();
                 codeIcon[indiceresult]= newobj["icon"].toString();
             }
-/*
-        //Affichage dans un seul plaintext
 
-            infosRecap = QString("%1 \n\nConditions Météo :     %2 "
-        "\nTempérature :     %3 \nTempérature Ressentie :     %4 \n\n-------------------------------------------------------------").
-                    arg(dt_txt).arg(description).
-                    arg(temperature).arg(tempressentie);
-            //qDebug()<<infosRecap;
-
-            ui->plainTextPrevisions->appendPlainText(infosRecap);
-*/
         //Préaparation du tableau pour affichage dans plusieurs plaintext
 
             infosRecaptab[indiceresult]=QString("%1 \n\nConditions Météo :     %2 "
@@ -396,8 +414,20 @@ void MainWindow::affPrevisions()
 
 void MainWindow::affMeteoMer()
 {
+
+    qDebug() << "MAJ Meteo en Mer";
+
+
+    if (parametres::getUnite()=="Celsius")
+        setUnite("metric");
+    else if (parametres::getUnite()=="Fahrenheit")
+        setUnite("imperial");
+    if (parametres::getLangue()=="Français")
+        setLangue("fr");
+    else if (parametres::getLangue()=="English")
+        setLangue("en");
+
     //qDebug() << "SSL ? " << QSslSocket::supportsSsl();
-    qDebug() << "Mise à jour Meteo en Mer";
 
     QNetworkRequest request(QUrl("http://82.65.244.166:48010/Releve_meteo.json"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -457,6 +487,9 @@ void MainWindow::on_action_Administration_triggered()
 {
     FenetreOptions = new DialogOptions("Paramètres",this);
     FenetreOptions->show();
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affPrevisions()));
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoville()));
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoMer()));
 }
 
 void MainWindow::on_action_Quitter_triggered()
@@ -472,7 +505,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
     msgBox.setInformativeText("Êtes-vous sûr?");
     msgBox.setIcon(QMessageBox::Question);
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-
 
     int reponse = msgBox.exec();
 

@@ -34,6 +34,15 @@ DialogOptions::DialogOptions(QString texte,QWidget *parent) :
     timer->start();
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
 
+
+    /*
+     * while (DialogOptions::isVisible())
+     {
+           MainWindow* fenetreParente = dynamic_cast<MainWindow*>(parent);
+           fenetreParente->setFont(parametres::getPolice());
+     }
+
+    */
 }
 
 DialogOptions::~DialogOptions()
@@ -52,33 +61,38 @@ void DialogOptions::affHeure()
 void DialogOptions::on_rdBtn12_clicked()
 {
     parametres::setFormatHeure(false);
+    emit modifparam();
+
 }
 
 
 void DialogOptions::on_rdBtn24_clicked()
 {
      parametres::setFormatHeure(true);
+     emit modifparam();
 }
 
 void DialogOptions::on_comboBoxLangue_currentTextChanged(const QString &arg1)
 {
     parametres::setLangue(arg1);
+    emit modifparam();
 }
 
 
 void DialogOptions::on_BtnPolice_clicked()
 {
     bool ok = false;
-    QFont policechoisi = QFontDialog::getFont(&ok, ui->BtnPolice->font(), this, "Choisissez une police");
+    QFont policechoisie = QFontDialog::getFont(&ok, ui->BtnPolice->font(), this, "Choisissez une police");
 
 
 
     if (ok)
     {
-        parametres::setPolice(policechoisi);
-        ui->BtnPolice->setFont(parametres::getPolice());
-        //on peut modifier ici la police de tout ce qu'on veut dans dialogoptions
-
+        //on enregistre la police choisie dans la classe parametres
+        parametres::setPolice(policechoisie);
+        emit modifparam();
+        //on modifie la police de tous les éléents de la fenêtre
+        this->setFont(parametres::getPolice());
 
     }
 
@@ -88,11 +102,15 @@ void DialogOptions::on_BtnPolice_clicked()
 void DialogOptions::on_rdBtnC_clicked()
 {
     parametres::setUnite("Celsius");
+    emit modifparam();
+
 }
 
 void DialogOptions::on_rdBtnFar_clicked()
 {
     parametres::setUnite("Fahrenheit");
+    emit modifparam();
+
 }
 
 void DialogOptions::on_buttonBox_accepted()
@@ -102,4 +120,10 @@ void DialogOptions::on_buttonBox_accepted()
     maConfig.setValue("Unite", parametres::getUnite());
     maConfig.setValue("FormatHeure", parametres::getFormat24Heure());
     qDebug()<<"Paramètres enregistrés";
+
+
+    //parentWidget()->setFont(parametres::getPolice());
+
+
+
 }

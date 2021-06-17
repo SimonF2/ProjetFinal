@@ -57,6 +57,7 @@ private:
     QString police;
     QTimer* timer; //Declenche un traitement à intervalle régulier
     QTimer* timerRasp;
+    parametres* options;
 
 };
 #endif // MAINWINDOW_H

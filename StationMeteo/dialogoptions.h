@@ -18,6 +18,8 @@ public:
     explicit DialogOptions(QString,QWidget *parent);
     ~DialogOptions();
 
+signals:
+    void modifparam();
 
 private slots:
     void affHeure();

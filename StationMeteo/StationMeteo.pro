@@ -9,17 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    dialoglangue.cpp \
     dialogoptions.cpp \
     main.cpp \
     mainwindow.cpp \
     parametres.cpp
 
 HEADERS += \
+    dialoglangue.h \
     dialogoptions.h \
     mainwindow.h \
     parametres.h
 
 FORMS += \
+    dialoglangue.ui \
     dialogoptions.ui \
     mainwindow.ui
 

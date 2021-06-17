@@ -5,8 +5,10 @@
 #include <QDebug>
 
 
-class parametres
+class parametres : public QObject
 {
+
+
 public:
     parametres();
 
