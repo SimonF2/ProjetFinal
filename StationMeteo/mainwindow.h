@@ -20,7 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void affDate();
+
 
 
 
@@ -39,6 +39,7 @@ protected:
 
 private slots:
     void affHeure();
+    void affDate();
     void affMeteoMer();
     void affMeteoville();
     void affPrevisions();

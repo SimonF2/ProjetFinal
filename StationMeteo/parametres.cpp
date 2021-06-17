@@ -30,7 +30,7 @@ void parametres::setFormatHeure(bool value)
     if (value == true || value == false)
         format24Heure = value;
 
-    qDebug()<<"Changement Format heure parmetres:"<<getHeure();
+    qDebug()<<"Changement Format heure parametres:"<<getHeure();
 }
 
 QString parametres::getLangue()
@@ -45,7 +45,7 @@ void parametres::setLangue(QString value)
         langue = value;
 
 
-    qDebug()<<"Changement Langue parmetres:"<<getLangue();
+    qDebug()<<"Changement Langue parametres:"<<getLangue();
 }
 
 QFont parametres::getPolice()
@@ -73,7 +73,7 @@ void parametres::setUnite(QString value)
         unite = value;
 
 
-    qDebug()<<"Changement Unite parmetres:"<<getUnite();
+    qDebug()<<"Changement Unite parametres:"<<getUnite();
 }
 
 bool parametres::getFormat24Heure()

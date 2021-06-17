@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-    this->setWindowTitle(tr("Station Météo de Mehdi et Simon"));
+    this->setWindowTitle(tr("Station Météo"));
+
 
 
     //this->setStyleSheet("border-radius: 5px;");
@@ -76,11 +77,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-
-
-
-
-
     //qDebug()<<"Premier test : " + parametres::getPolice().toString();
     //qDebug()<<"Bouton : " + ui->BtnMeteo->font().toString();
 
@@ -122,15 +118,43 @@ void MainWindow::affHeure()
 
 void MainWindow::affDate()
 {
+    qDebug() << "MAJ Date";
     QDateTime Date = QDateTime::currentDateTime();
+
+    if (parametres::getLangue()=="Français")
+    {
+        QLocale locale(QLocale::French, QLocale::Country::France);
+        QLocale::setDefault(locale);
+    }
+    else if (parametres::getLangue()=="English")
+    {
+        QLocale locale(QLocale::English, QLocale::Country::UnitedKingdom);
+        QLocale::setDefault(locale);
+    }
+
+    qDebug()<< Date.toString("dddd dd MMMM");
+    qDebug()<< Date.toString(Qt::DefaultLocaleLongDate);
+
     QString dateaff=Date.toString("dddd dd MMMM");
     dateaff[0]=dateaff[0].toUpper();
+
+    /**************************************/
+    //MAJ de la police de la Date
+    QFont font = parametres::getPolice();
+    font.setPointSize(font.pointSize()+5);
+    font.setBold(true);
+    ui->lblDate->setFont(font);
+
+    /**************************************/
     ui->lblDate->setText(dateaff);
 }
 
 void MainWindow::affMeteoville()
 {
     qDebug() <<"MAJ MeteoVille";
+
+    /**************************************/
+
     //MAJ de la police de la fenêtre principale
     this->setFont(parametres::getPolice());
 
@@ -138,7 +162,7 @@ void MainWindow::affMeteoville()
     ui->plainTextMeteo->setFont(parametres::getPolice());
 
 
-    //-----------------------------------
+    /**************************************/
 
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
@@ -268,7 +292,16 @@ void MainWindow::affPrevisions()
 {
     qDebug()<<"MAJ Prévisions";
 
+    /**************************************/
+    //MAJ de la police de affMeteoville
+    ui->plainTextPrevisions1->setFont(parametres::getPolice());
+    ui->plainTextPrevisions2->setFont(parametres::getPolice());
+    ui->plainTextPrevisions3->setFont(parametres::getPolice());
+    ui->plainTextPrevisions4->setFont(parametres::getPolice());
+    ui->plainTextPrevisions5->setFont(parametres::getPolice());
 
+
+    /**************************************/
 
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
@@ -363,8 +396,8 @@ void MainWindow::affPrevisions()
 
         //Préaparation du tableau pour affichage dans plusieurs plaintext
 
-            infosRecaptab[indiceresult]=QString("%1 \n\nConditions Météo :     %2 "
-        "\nTempérature :     %3 \nTempérature Ressentie :     %4  ").
+            infosRecaptab[indiceresult]=QString(tr("%1 \n\nConditions Météo :     %2 "
+        "\nTempérature :     %3 \nTempérature Ressentie :     %4  ")).
                     arg(dt_txt).arg(description).
                     arg(temperature).arg(tempressentie);
 
@@ -374,8 +407,7 @@ void MainWindow::affPrevisions()
     }
 
 
-    //affichage icone
-
+    //affichage icone et infosRecap
 
     QLabel* ListeIcones[5]={ui->iconeJ1,ui->iconeJ2,ui->iconeJ3,ui->iconeJ4,ui->iconeJ5};
     QPlainTextEdit* ListePlaintext[5]={ui->plainTextPrevisions1,ui->plainTextPrevisions2,ui->plainTextPrevisions3,ui->plainTextPrevisions4,ui->plainTextPrevisions5};
@@ -416,6 +448,18 @@ void MainWindow::affMeteoMer()
 {
 
     qDebug() << "MAJ Meteo en Mer";
+
+    /**************************************/
+    //MAJ de la police de affMeteoville
+    QFont font = parametres::getPolice();
+    font.setPointSize(font.pointSize()+4);
+    ui->labelTitreMer->setFont(font);
+
+    ui->labelMer->setFont(parametres::getPolice());
+
+
+
+    /**************************************/
 
 
     if (parametres::getUnite()=="Celsius")
@@ -474,8 +518,11 @@ void MainWindow::affMeteoMer()
 
     //concaténation et affichage des infos
 
-    QString infosRecap = QString("Température :   \n  %1 "
-"\n\nPression atmosphérique (hPa) :   \n  %2 \n\nTaux d'Humidité (%) :   \n  %3").
+    ui->labelTitreMer->setText(tr("Conditions Météo en Mer :"));
+
+
+    QString infosRecap = QString(tr("Température :   \n  %1 "
+"\n\nPression atmosphérique (hPa) :   \n  %2 \n\nTaux d'Humidité (%) :   \n  %3")).
             arg(temperature).arg(pression).arg(humidite);
     //qDebug()<<infosRecap;
     ui->labelMer->setText(infosRecap);
@@ -490,6 +537,8 @@ void MainWindow::on_action_Administration_triggered()
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affPrevisions()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoville()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoMer()));
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
+
 }
 
 void MainWindow::on_action_Quitter_triggered()

@@ -15,6 +15,7 @@ Dialoglangue::Dialoglangue(QWidget *parent) :
 Dialoglangue::~Dialoglangue()
 {
     delete ui;
+    delete FenetrePrincipale;
 }
 
 void Dialoglangue::on_ValidLangue_clicked()
