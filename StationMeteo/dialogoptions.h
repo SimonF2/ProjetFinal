@@ -34,6 +34,8 @@ private slots:
 
     void on_rdBtnFar_clicked();
 
+    void on_buttonBox_accepted();
+
 private:
     Ui::DialogOptions *ui;
     QTimer* timer;

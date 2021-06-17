@@ -12,6 +12,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QResource>
+#include <QSettings>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,11 +22,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
     this->setWindowTitle("Station Météo de Mehdi et Simon");
+    //this->setStyleSheet("border-radius: 5px;");
+    //this->setStyleSheet("background-color: black; border-radius: 5px;");
 
-    qDebug()<<"langue Mainwindow au démarrage:"<<getLangue();
-    qDebug()<<"unite Mainwindow au démarrage:"<<getUnite();
+    QSettings maConfig("parametres.ini", QSettings::IniFormat);
+    parametres::setFormatHeure(maConfig.value("FormatHeure").toBool());
+    parametres::setUnite(maConfig.value("Unite").toString());
+    parametres::setLangue(maConfig.value("Langue").toString());
 
-    //Mise à jour des parametres en fonction de la classe correspondante
+
+    //qDebug()<<"langue Mainwindow au démarrage:"<<getLangue();
+    //qDebug()<<"unite Mainwindow au démarrage:"<<getUnite();
+
+    //Mise à jour des parametres de MainWindow en fonction de la classe parametres
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
     else if (parametres::getUnite()=="Fahrenheit")
@@ -49,17 +58,17 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start();
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
 
-
-    //Affichage Météo et Prévision en continu, sans MAJ
-    //affMeteoville();
-    //affPrevisions();
-
-    //Affichage Meteo Mer avec maj toutes les 5min
+    //Affichage des 3 Météos avec maj toutes les 5min
+    affMeteoville();
+    affPrevisions();
     affMeteoMer();
     timerRasp = new QTimer();
     timerRasp->setInterval(60000); //5min=300000 msec
     timerRasp->start();
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoMer()));
+    connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoVille()));
+    connect(timerRasp, SIGNAL(timeout()), this, SLOT(affPrevisions()));
+
 
 
 
@@ -285,7 +294,7 @@ void MainWindow::affPrevisions()
     QString description;
 
     QString codeIcon [5];
-    QString infosRecap;
+    //QString infosRecap;
     QString infosRecaptab [5];
 
 
@@ -405,8 +414,8 @@ void MainWindow::affMeteoMer()
 
     QByteArray response_data = reply->readAll();
 
-    qDebug() << "Size: " << response_data.size();
-    qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
+    //qDebug() << "Size: " << response_data.size();
+    //qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
 
     //Conversion du ByteArray en Json
     QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
@@ -416,9 +425,19 @@ void MainWindow::affMeteoMer()
 
     //qDebug() << jsonObject.value("sensor").toString();
     //qDebug() << jsonObject["sensor"].toString();
-    qDebug() << jsonObject.keys();
+    //qDebug() << jsonObject.keys();
 
-    QString temperature=QString::number(jsonObject["temperature"].toDouble());
+    double temp=0;
+    if (parametres::getUnite()=="Celsius")
+    {
+        temp=jsonObject["temperature"].toDouble();
+    }
+    else if (parametres::getUnite()=="Fahrenheit")
+    {
+        temp=(jsonObject["temperature"].toDouble()*9/5) + 32;
+    }
+
+    QString temperature=QString::number(temp);
     QString pression=QString::number(jsonObject["pressure"].toDouble());
     QString humidite=QString::number(jsonObject["humidity"].toDouble());
 
@@ -428,7 +447,7 @@ void MainWindow::affMeteoMer()
     QString infosRecap = QString("Température :   \n  %1 "
 "\n\nPression atmosphérique (hPa) :   \n  %2 \n\nTaux d'Humidité (%) :   \n  %3").
             arg(temperature).arg(pression).arg(humidite);
-    qDebug()<<infosRecap;
+    //qDebug()<<infosRecap;
     ui->labelMer->setText(infosRecap);
 
 

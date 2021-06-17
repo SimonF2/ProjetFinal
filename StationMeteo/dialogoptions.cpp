@@ -8,6 +8,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QFontDialog>
+#include <QSettings>
 
 DialogOptions::DialogOptions(QString texte,QWidget *parent) :
     QDialog(parent),
@@ -19,6 +20,13 @@ DialogOptions::DialogOptions(QString texte,QWidget *parent) :
     {
         this->setWindowTitle(texte);
     }
+
+    if (parametres::getFormat24Heure()==false)
+        ui->rdBtn12->setChecked(true);
+    if (parametres::getUnite()=="Fahrenheit")
+        ui->rdBtnFar->setChecked(true);
+    if (parametres::getLangue()=="English")
+        ui->comboBoxLangue->setCurrentText("English");
 
     affHeure();
     timer = new QTimer();
@@ -85,4 +93,13 @@ void DialogOptions::on_rdBtnC_clicked()
 void DialogOptions::on_rdBtnFar_clicked()
 {
     parametres::setUnite("Fahrenheit");
+}
+
+void DialogOptions::on_buttonBox_accepted()
+{
+    QSettings maConfig("parametres.ini", QSettings::IniFormat);
+    maConfig.setValue("Langue", parametres::getLangue());
+    maConfig.setValue("Unite", parametres::getUnite());
+    maConfig.setValue("FormatHeure", parametres::getFormat24Heure());
+    qDebug()<<"Paramètres enregistrés";
 }

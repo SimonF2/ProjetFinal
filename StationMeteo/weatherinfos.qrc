@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>icons/01d_clear_sky.png</file>
         <file>icons/02d_few_clouds.png</file>
         <file>icons/03d_scattered_clouds.png</file>
         <file>icons/04d_broken_clouds.png</file>
@@ -9,5 +8,6 @@
         <file>icons/11d_thunderstorm.png</file>
         <file>icons/13d_snow.png</file>
         <file>icons/50d_mist.png</file>
+        <file>icons/01d_clear_sky.png</file>
     </qresource>
 </RCC>

@@ -26,9 +26,9 @@
    <widget class="QLabel" name="lblDate">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>680</x>
       <y>89</y>
-      <width>251</width>
+      <width>231</width>
       <height>31</height>
      </rect>
     </property>
@@ -40,6 +40,12 @@
       <kerning>true</kerning>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 0);</string>
+    </property>
     <property name="text">
      <string>Date</string>
     </property>
@@ -48,6 +54,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="BtnMeteo">
@@ -59,8 +68,14 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
-     <string>Changer de Ville</string>
+     <string>&amp;Changer de Ville</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="plainTextMeteo">
@@ -71,6 +86,9 @@
       <width>251</width>
       <height>581</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -100,8 +118,8 @@
    <widget class="QLabel" name="lbliconmeteo">
     <property name="geometry">
      <rect>
-      <x>99</x>
-      <y>394</y>
+      <x>95</x>
+      <y>390</y>
       <width>221</width>
       <height>221</height>
      </rect>
@@ -109,8 +127,11 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 0);</string>
+    </property>
     <property name="text">
-     <string>J</string>
+     <string/>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -120,6 +141,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
     <property name="margin">
      <number>0</number>
@@ -327,6 +351,9 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="text">
      <string>Ville Séléctionnée : </string>
     </property>
@@ -336,15 +363,24 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEditVille">
     <property name="geometry">
      <rect>
-      <x>736</x>
+      <x>737</x>
       <y>281</y>
       <width>111</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Paris</string>
@@ -353,7 +389,7 @@
    <widget class="QLabel" name="iconeJ1">
     <property name="geometry">
      <rect>
-      <x>589</x>
+      <x>588</x>
       <y>99</y>
       <width>71</width>
       <height>61</height>
@@ -365,17 +401,26 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="lineWidth">
      <number>0</number>
     </property>
     <property name="text">
-     <string>J+1</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="iconeJ2">
@@ -393,17 +438,26 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="lineWidth">
      <number>0</number>
     </property>
     <property name="text">
-     <string>J+2</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="iconeJ3">
@@ -421,17 +475,26 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="lineWidth">
      <number>0</number>
     </property>
     <property name="text">
-     <string>J+3</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="iconeJ4">
@@ -449,17 +512,26 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="lineWidth">
      <number>0</number>
     </property>
     <property name="text">
-     <string>J+4</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="iconeJ5">
@@ -477,17 +549,26 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="lineWidth">
      <number>0</number>
     </property>
     <property name="text">
-     <string>J+5</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="labelTitreMer">
@@ -504,6 +585,13 @@
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(93, 187, 225);
+</string>
+    </property>
     <property name="text">
      <string>Conditions Météo en Mer :</string>
     </property>
@@ -512,6 +600,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="plainTextDate">
@@ -522,6 +613,9 @@
       <width>251</width>
       <height>121</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -557,8 +651,21 @@
       <height>171</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(93, 187, 225);
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber">
@@ -578,6 +685,12 @@
       <underline>false</underline>
       <kerning>true</kerning>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
@@ -606,6 +719,9 @@
       <width>321</width>
       <height>117</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -644,6 +760,9 @@
       <height>117</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
     </property>
@@ -680,6 +799,9 @@
       <width>321</width>
       <height>117</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -718,6 +840,9 @@
       <height>117</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
     </property>
@@ -754,6 +879,9 @@
       <width>321</width>
       <height>117</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -818,6 +946,9 @@
      <height>26</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
      <string>&amp;Administration</string>
@@ -845,5 +976,22 @@
   </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineEditVille</sender>
+   <signal>editingFinished()</signal>
+   <receiver>BtnMeteo</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>791</x>
+     <y>323</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>793</x>
+     <y>355</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
