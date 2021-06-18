@@ -35,14 +35,6 @@ DialogOptions::DialogOptions(QString texte,QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
 
 
-    /*
-     * while (DialogOptions::isVisible())
-     {
-           MainWindow* fenetreParente = dynamic_cast<MainWindow*>(parent);
-           fenetreParente->setFont(parametres::getPolice());
-     }
-
-    */
 }
 
 DialogOptions::~DialogOptions()

@@ -1,6 +1,6 @@
 #include "dialoglangue.h"
 #include "ui_dialoglangue.h"
-#include "mainwindow.h"
+
 
 #include <QSettings>
 
@@ -15,23 +15,20 @@ Dialoglangue::Dialoglangue(QWidget *parent) :
 Dialoglangue::~Dialoglangue()
 {
     delete ui;
-    delete FenetrePrincipale;
+
 }
+
+void Dialoglangue::on_comboBoxLangue_currentTextChanged(const QString &arg1)
+{
+    parametres::setLangue(arg1);
+}
+
 
 void Dialoglangue::on_ValidLangue_clicked()
 {
-    FenetrePrincipale = new MainWindow;
-    FenetrePrincipale->show();
-    this->close();
-
-    /*
-    if (bouton checked)
-    parametres::setLangue(bouton->text());
-    else if (bouton2 checked)
-    parametres::setLangue(bouton2->text());
 
     QSettings maConfig("parametres.ini", QSettings::IniFormat);
     maConfig.setValue("Langue", parametres::getLangue());
 
-    */
+    this->close();
 }

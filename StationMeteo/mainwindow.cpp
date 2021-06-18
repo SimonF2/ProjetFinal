@@ -120,22 +120,21 @@ void MainWindow::affDate()
 {
     qDebug() << "MAJ Date";
     QDateTime Date = QDateTime::currentDateTime();
-
+    QLocale locale;
+    QString dateaff;
     if (parametres::getLangue()=="Français")
     {
-        QLocale locale(QLocale::French, QLocale::Country::France);
+        locale=QLocale(QLocale::French, QLocale::Country::France);
         QLocale::setDefault(locale);
+        dateaff=locale.toString(Date,"dddd dd MMMM");
     }
     else if (parametres::getLangue()=="English")
     {
-        QLocale locale(QLocale::English, QLocale::Country::UnitedKingdom);
+        locale=QLocale(QLocale::English, QLocale::Country::UnitedKingdom);
         QLocale::setDefault(locale);
+        dateaff=locale.toString(Date,"dddd, dd MMMM");
     }
 
-    qDebug()<< Date.toString("dddd dd MMMM");
-    qDebug()<< Date.toString(Qt::DefaultLocaleLongDate);
-
-    QString dateaff=Date.toString("dddd dd MMMM");
     dateaff[0]=dateaff[0].toUpper();
 
     /**************************************/
@@ -359,6 +358,17 @@ void MainWindow::affPrevisions()
     QString infosRecaptab [5];
 
 
+    QString unit;
+    if (parametres::getUnite()=="Celsius")
+    {
+        unit= " °C ";
+    }
+    if (parametres::getUnite()=="Fahrenheit")
+    {
+        unit= " °F ";
+    }
+
+
     int indiceresult=0;
 
     foreach(const QJsonValue &value, Liste)
@@ -366,11 +376,21 @@ void MainWindow::affPrevisions()
         QJsonObject obj = value.toObject();
 
         dt_txt= obj["dt_txt"].toString();
-        //dt_txttab[indiceresult]=obj["dt_txt"].toString();
+        QDateTime dateconv =QDateTime::fromString(dt_txt,"yyyy-MM-dd hh:mm:ss");
+        QLocale locale;
+        QString dateaff;
 
-        if (dt_txt.contains(" 15:00:00"))
+
+        //qDebug()<<dateconv.toString("dddd dd MMMM '15H'");
+
+
+        QDateTime Date = QDateTime::currentDateTime();
+        QString date=Date.toString("yyyy-MM-dd");
+
+        if (dt_txt.contains(" 15:00:00"))//&&!dt_txt.contains(date))
 
         {
+
 
             //on se positionne sur l'objet main
             QJsonObject main=obj["main"].toObject();
@@ -394,12 +414,31 @@ void MainWindow::affPrevisions()
                 codeIcon[indiceresult]= newobj["icon"].toString();
             }
 
+            if (parametres::getLangue()=="Français")
+            {
+                locale=QLocale(QLocale::French, QLocale::Country::France);
+                QLocale::setDefault(locale);
+                dateaff=locale.toString(dateconv,"dddd dd MMMM '15h'");
+            }
+            else if (parametres::getLangue()=="English")
+            {
+                locale=QLocale(QLocale::English, QLocale::Country::UnitedKingdom);
+                QLocale::setDefault(locale);
+                dateaff=locale.toString(dateconv,"dddd, dd MMMM '3pm'");
+            }
+
+            dateaff[0]=dateaff[0].toUpper();
+            description[0]=description[0].toUpper();
+
+
+
+
         //Préaparation du tableau pour affichage dans plusieurs plaintext
 
             infosRecaptab[indiceresult]=QString(tr("%1 \n\nConditions Météo :     %2 "
-        "\nTempérature :     %3 \nTempérature Ressentie :     %4  ")).
-                    arg(dt_txt).arg(description).
-                    arg(temperature).arg(tempressentie);
+        "\nTempérature :     %3 %4 \nTempérature Ressentie :     %5 %6  ")).
+                    arg(dateaff).arg(description).
+                    arg(temperature).arg(unit).arg(tempressentie).arg(unit);
 
             indiceresult=indiceresult+1;
 

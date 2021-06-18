@@ -6,12 +6,25 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    //
+    //a.installTranslator(&translator);
 
     Dialoglangue l;
-    l.show();
+    l.exec();
 
-    //MainWindow w;
-    //w.show();
+    /*
+    if (parametres::getLangue()=="English")
+    {
+        //translator.load
+    }
+    else
+    {
+
+    }
+    */
+
+    MainWindow w;
+    w.show();
 
     return a.exec();
 }
