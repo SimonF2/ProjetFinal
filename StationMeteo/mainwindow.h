@@ -55,7 +55,6 @@ private:
     QString villeSelec = "Paris";
     QString unite;
     QString langue;
-    QString police;
     QTimer* timer; //Declenche un traitement à intervalle régulier
     QTimer* timerRasp;
     parametres* options;

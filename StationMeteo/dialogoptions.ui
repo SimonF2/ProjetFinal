@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>441</height>
+    <width>735</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>390</y>
+     <y>420</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -32,7 +32,7 @@
   <widget class="QGroupBox" name="grpBoxHeure">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>105</x>
      <y>10</y>
      <width>501</width>
      <height>91</height>
@@ -116,8 +116,8 @@
   <widget class="QPushButton" name="BtnPolice">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>290</y>
+     <x>245</x>
+     <y>269</y>
      <width>231</width>
      <height>51</height>
     </rect>
@@ -129,8 +129,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>230</y>
+     <x>235</x>
+     <y>221</y>
      <width>261</width>
      <height>24</height>
     </rect>
@@ -181,7 +181,7 @@
   <widget class="QGroupBox" name="grpBoxTemp">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>105</x>
      <y>110</y>
      <width>501</width>
      <height>91</height>

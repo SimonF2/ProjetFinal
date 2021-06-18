@@ -62,8 +62,8 @@
    <widget class="QPushButton" name="BtnMeteo">
     <property name="geometry">
      <rect>
-      <x>728</x>
-      <y>311</y>
+      <x>730</x>
+      <y>320</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -345,11 +345,16 @@
    <widget class="QLabel" name="labelVille">
     <property name="geometry">
      <rect>
-      <x>736</x>
-      <y>251</y>
-      <width>121</width>
-      <height>16</height>
+      <x>686</x>
+      <y>245</y>
+      <width>221</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -370,11 +375,16 @@
    <widget class="QLineEdit" name="lineEditVille">
     <property name="geometry">
      <rect>
-      <x>737</x>
+      <x>729</x>
       <y>281</y>
-      <width>111</width>
-      <height>21</height>
+      <width>131</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>

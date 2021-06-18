@@ -75,16 +75,15 @@ void DialogOptions::on_BtnPolice_clicked()
 {
     bool ok = false;
     QFont policechoisie = QFontDialog::getFont(&ok, ui->BtnPolice->font(), this, "Choisissez une police");
-
-
+    //policechoisie.fromString("Arial Narrow,60,-1,5,75,1,1,0,0,0,Gras Italique");
 
     if (ok)
     {
         //on enregistre la police choisie dans la classe parametres
         parametres::setPolice(policechoisie);
         emit modifparam();
-        //on modifie la police de tous les éléents de la fenêtre
-        this->setFont(parametres::getPolice());
+        //on modifie la police de tous les éléments de la fenêtre
+        //this->setFont(parametres::getPolice());
 
     }
 
@@ -111,6 +110,8 @@ void DialogOptions::on_buttonBox_accepted()
     maConfig.setValue("Langue", parametres::getLangue());
     maConfig.setValue("Unite", parametres::getUnite());
     maConfig.setValue("FormatHeure", parametres::getFormat24Heure());
+    maConfig.setValue("Police", parametres::getPolice());
+
     qDebug()<<"Paramètres enregistrés";
 
 

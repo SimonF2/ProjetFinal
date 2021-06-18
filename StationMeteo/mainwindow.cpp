@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QMessageBox>
 
+
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -13,6 +14,8 @@
 #include <QNetworkRequest>
 #include <QResource>
 #include <QSettings>
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -28,18 +31,11 @@ MainWindow::MainWindow(QWidget *parent)
     //this->setStyleSheet("border-radius: 5px;");
     //this->setStyleSheet("background-color: black; border-radius: 5px;");
 
-    QSettings maConfig("parametres.ini", QSettings::IniFormat);
-    parametres::setFormatHeure(maConfig.value("FormatHeure").toBool());
-    parametres::setUnite(maConfig.value("Unite").toString());
-    parametres::setLangue(maConfig.value("Langue").toString());
 
-
-    //qDebug()<<"langue Mainwindow au démarrage:"<<getLangue();
-    //qDebug()<<"unite Mainwindow au démarrage:"<<getUnite();
 
     //--------------------------------------------------------------------
     //Mise à jour des parametres de MainWindow en fonction de la classe parametres
-    this->setFont(parametres::getPolice());
+
 
     if (parametres::getUnite()=="Celsius")
         setUnite("metric");
@@ -57,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Affichage Date en continue
     affDate();
 
-    //AFfichage Heure avec maj toutes les secondes
+    //Affichage Heure avec maj toutes les secondes
     affHeure(); // Affiche l'heure dès la première seconde
     timer = new QTimer();
     timer->setInterval(1000); //1000ms = 1 sec
@@ -67,18 +63,13 @@ MainWindow::MainWindow(QWidget *parent)
     //Affichage des 3 Météos avec maj toutes les 5min
     //affMeteoville();
     //affPrevisions();
-    //affMeteoMer();
+    affMeteoMer();
     timerRasp = new QTimer();
-    timerRasp->setInterval(60000); //5min=300000 msec
+    timerRasp->setInterval(300000); //5min=300000 msec
     timerRasp->start();
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoMer()));
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affMeteoVille()));
     connect(timerRasp, SIGNAL(timeout()), this, SLOT(affPrevisions()));
-
-
-
-    //qDebug()<<"Premier test : " + parametres::getPolice().toString();
-    //qDebug()<<"Bouton : " + ui->BtnMeteo->font().toString();
 
 
 
@@ -118,6 +109,12 @@ void MainWindow::affHeure()
 
 void MainWindow::affDate()
 {
+    //MAJ de la police de la fenêtre principale
+
+    ui->labelVille->setFont(parametres::getPolice());
+    ui->BtnMeteo->setFont(parametres::getPolice());
+
+
     qDebug() << "MAJ Date";
     QDateTime Date = QDateTime::currentDateTime();
     QLocale locale;
@@ -140,7 +137,7 @@ void MainWindow::affDate()
     /**************************************/
     //MAJ de la police de la Date
     QFont font = parametres::getPolice();
-    font.setPointSize(font.pointSize()+5);
+    font.setPointSize(13);
     font.setBold(true);
     ui->lblDate->setFont(font);
 
@@ -153,9 +150,6 @@ void MainWindow::affMeteoville()
     qDebug() <<"MAJ MeteoVille";
 
     /**************************************/
-
-    //MAJ de la police de la fenêtre principale
-    this->setFont(parametres::getPolice());
 
     //MAJ de la police de affMeteoville
     ui->plainTextMeteo->setFont(parametres::getPolice());
@@ -211,6 +205,18 @@ void MainWindow::affMeteoville()
 
     QString description;
     QString codeIcon;
+
+    QString unit;
+    if (parametres::getUnite()=="Celsius")
+    {
+        unit= "°C";
+    }
+    if (parametres::getUnite()=="Fahrenheit")
+    {
+        unit= "°F";
+    }
+
+
     foreach(const QJsonValue &value, weather)
     {
         QJsonObject obj = value.toObject();
@@ -240,16 +246,17 @@ void MainWindow::affMeteoville()
 
     //concaténation et affichage des infos
 
-    QString infosRecap = QString(tr("%1 \n\nConditions Météo :   \n  %2 "
-"\nTempérature :   \n  %3 \nTempérature Ressentie :   \n  %4 "
-"\nPression atmosphérique (hPa) :   \n  %5 \nTaux d'Humidité (%) :   \n  %6")).
-            arg(ville).arg(description).
-            arg(temperature).arg(tempressentie).arg(pression).arg(humidite);
-    //qDebug()<<infosRecap;
+    QString infosRecap = tr("%1 \n\nConditions Météo :   \n    %2 "
+"\nTempérature :   \n    %3  %4\nTempérature Ressentie :   \n    %5  %6"
+"\nPression atmosphérique :   \n    %7  hPa \nTaux d'Humidité :   \n    %8  %")
+            .arg(ville).arg(description).
+            arg(temperature).arg(unit).arg(tempressentie).arg(unit).arg(pression).arg(humidite);
+
     ui->plainTextMeteo->setPlainText(infosRecap);
 
 
     //affichage icone
+
     ui->lbliconmeteo->setScaledContents(true);
     if (codeIcon=="01d")
         ui->lbliconmeteo->setPixmap(QResource(":/icons/icons/01d_clear_sky.png").fileName());
@@ -280,10 +287,8 @@ void MainWindow::on_BtnMeteo_clicked()
     if (ui->lineEditVille->text()!="")
         villeSelec=ui->lineEditVille->text();
 
-
     affMeteoville();
     affPrevisions();
-    affMeteoMer();
 
 }
 
@@ -435,8 +440,8 @@ void MainWindow::affPrevisions()
 
         //Préaparation du tableau pour affichage dans plusieurs plaintext
 
-            infosRecaptab[indiceresult]=QString(tr("%1 \n\nConditions Météo :     %2 "
-        "\nTempérature :     %3 %4 \nTempérature Ressentie :     %5 %6  ")).
+            infosRecaptab[indiceresult]=tr("%1 \n\nConditions Météo :     %2 "
+        "\nTempérature :     %3 %4 \nTempérature Ressentie :     %5 %6  ").
                     arg(dateaff).arg(description).
                     arg(temperature).arg(unit).arg(tempressentie).arg(unit);
 
@@ -491,7 +496,7 @@ void MainWindow::affMeteoMer()
     /**************************************/
     //MAJ de la police de affMeteoville
     QFont font = parametres::getPolice();
-    font.setPointSize(font.pointSize()+4);
+    font.setPointSize(11);
     ui->labelTitreMer->setFont(font);
 
     ui->labelMer->setFont(parametres::getPolice());
@@ -512,7 +517,7 @@ void MainWindow::affMeteoMer()
 
     //qDebug() << "SSL ? " << QSslSocket::supportsSsl();
 
-    QNetworkRequest request(QUrl("http://82.65.244.166:48010/Releve_meteo.json"));
+    QNetworkRequest request(QUrl("http://78.199.78.207:48010/Releve_meteo.json"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     QNetworkAccessManager nam;
@@ -550,6 +555,16 @@ void MainWindow::affMeteoMer()
         temp=(jsonObject["temperature"].toDouble()*9/5) + 32;
     }
 
+    QString unit;
+    if (parametres::getUnite()=="Celsius")
+    {
+        unit= "°C";
+    }
+    if (parametres::getUnite()=="Fahrenheit")
+    {
+        unit= "°F";
+    }
+
     QString temperature=QString::number(temp);
     QString pression=QString::number(jsonObject["pressure"].toDouble());
     QString humidite=QString::number(jsonObject["humidity"].toDouble());
@@ -560,10 +575,10 @@ void MainWindow::affMeteoMer()
     ui->labelTitreMer->setText(tr("Conditions Météo en Mer :"));
 
 
-    QString infosRecap = QString(tr("Température :   \n  %1 "
-"\n\nPression atmosphérique (hPa) :   \n  %2 \n\nTaux d'Humidité (%) :   \n  %3")).
-            arg(temperature).arg(pression).arg(humidite);
-    //qDebug()<<infosRecap;
+    QString infosRecap = tr("Température :   \n  %1  %2"
+"\n\nPression atmosphérique :   \n  %3  hPa\n\nTaux d'Humidité :   \n  %4  %")
+            .arg(temperature).arg(unit).arg(pression).arg(humidite);
+    qDebug()<<infosRecap;
     ui->labelMer->setText(infosRecap);
 
 
@@ -573,10 +588,10 @@ void MainWindow::on_action_Administration_triggered()
 {
     FenetreOptions = new DialogOptions("Paramètres",this);
     FenetreOptions->show();
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affPrevisions()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoville()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoMer()));
-    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
 
 }
 

@@ -10,6 +10,10 @@ Dialoglangue::Dialoglangue(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("Choix de la langue"));
+
+    if (parametres::getLangue()=="English")
+        ui->comboBoxLangue->setCurrentText("English");
+
 }
 
 Dialoglangue::~Dialoglangue()
@@ -29,6 +33,8 @@ void Dialoglangue::on_ValidLangue_clicked()
 
     QSettings maConfig("parametres.ini", QSettings::IniFormat);
     maConfig.setValue("Langue", parametres::getLangue());
+
+    qDebug()<<"Paramètre langue enregistré";
 
     this->close();
 }
