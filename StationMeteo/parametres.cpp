@@ -8,6 +8,7 @@ bool parametres::format24Heure = true;
 QString parametres::langue = "Français";
 QFont parametres::police("MS Shell Dlg 2",8,-1, false);
 QString parametres::unite = "Celsius";
+QString parametres::mode = "Jour";
 
 parametres::parametres()
 {
@@ -23,6 +24,11 @@ QString parametres::getHeure()
     }
     else
         return Heure.toString("h:m:s ap");
+}
+
+bool parametres::getFormat24Heure()
+{
+    return format24Heure;
 }
 
 void parametres::setFormatHeure(bool value)
@@ -56,7 +62,7 @@ void parametres::setPolice(QFont value)
 {
     police = value;
 
-    qDebug()<<value.toString();
+    qDebug()<<"Changement de Police parametres:" << getPolice().toString();
 }
 
 QString parametres::getUnite()
@@ -69,11 +75,20 @@ void parametres::setUnite(QString value)
     if (value == "Celsius" || value == "Fahrenheit")
         unite = value;
 
-
     qDebug()<<"Changement Unite parametres:"<<getUnite();
 }
 
-bool parametres::getFormat24Heure()
+QString parametres::getMode()
 {
-    return format24Heure;
+    return mode;
 }
+
+void parametres::setMode(const QString &value)
+{
+    if (value == "Jour" || value == "Nuit")
+        mode = value;
+
+    qDebug()<<"Changement Mode parametres:"<<getMode();
+}
+
+

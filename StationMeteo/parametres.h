@@ -25,13 +25,15 @@ public:
     static QString getUnite();
     static void setUnite(QString value);
 
-
+    static QString getMode();
+    static void setMode(const QString &value);
 
 private:
     static bool format24Heure;
     static QString langue;
     static QFont police;
     static QString unite;
+    static QString mode;
 };
 
 #endif // PARAMETRES_H

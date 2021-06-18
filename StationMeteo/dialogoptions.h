@@ -20,6 +20,7 @@ public:
 
 signals:
     void modifparam();
+    void modifmode();
 
 private slots:
     void affHeure();
@@ -37,6 +38,10 @@ private slots:
     void on_rdBtnFar_clicked();
 
     void on_buttonBox_accepted();
+
+    void on_rdBtnJour_clicked();
+
+    void on_rdBtnNuit_clicked();
 
 private:
     Ui::DialogOptions *ui;

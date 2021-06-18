@@ -38,6 +38,7 @@ protected:
 
 
 private slots:
+    void modeaffichage();
     void affHeure();
     void affDate();
     void affMeteoMer();
@@ -48,7 +49,6 @@ private slots:
     void on_BtnMeteo_clicked(); //équivalent set ville
 
 
-
 private:
     Ui::MainWindow *ui;
     DialogOptions* FenetreOptions;
@@ -57,7 +57,7 @@ private:
     QString langue;
     QTimer* timer; //Declenche un traitement à intervalle régulier
     QTimer* timerRasp;
-    parametres* options;
+
 
 };
 #endif // MAINWINDOW_H

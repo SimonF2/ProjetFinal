@@ -50,6 +50,9 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug()<<"unite Mainwindow suite MAJ via parametres:"<<getUnite();
     //--------------------------------------------------------------------
 
+    //Affichage en fonction du mode choisi
+    modeaffichage();
+
     //Affichage Date en continue
     affDate();
 
@@ -92,6 +95,28 @@ void MainWindow::setUnite(const QString &value)
 {
     unite = value;
 }
+
+void MainWindow::modeaffichage()
+{
+    if (parametres::getMode()=="Jour")
+    {
+        qDebug()<< "Mode Jour";
+        //this->setStyleSheet("background-color: white; color: black");
+        ui->centralwidget->setStyleSheet("background-color: white; color: black");
+        ui->BtnMeteo->setStyleSheet("background-color: orange; color: grey");
+        ui->lineEditVille->setStyleSheet("color: black");
+
+    }
+    else if (parametres::getMode()=="Nuit")
+    {
+        qDebug()<< "Mode Nuit";
+        //this->setStyleSheet("background-color: black");
+        ui->centralwidget->setStyleSheet("background-color: black; color: white");
+        ui->BtnMeteo->setStyleSheet("background-color: grey; color: black");
+        ui->lineEditVille->setStyleSheet("background-color: black ");
+    }
+}
+
 
 void MainWindow::affHeure()
 {
@@ -224,7 +249,7 @@ void MainWindow::affMeteoville()
         description=obj["description"].toString();
         //qDebug() << "CodeIcon : " << obj["icon"].toString();
         codeIcon= obj["icon"].toString();
-
+        description[0]=description[0].toUpper();
     }
 
 
@@ -297,7 +322,7 @@ void MainWindow::affPrevisions()
     qDebug()<<"MAJ Prévisions";
 
     /**************************************/
-    //MAJ de la police de affMeteoville
+    //MAJ de la police de affMeteoPrevisions
     ui->plainTextPrevisions1->setFont(parametres::getPolice());
     ui->plainTextPrevisions2->setFont(parametres::getPolice());
     ui->plainTextPrevisions3->setFont(parametres::getPolice());
@@ -575,8 +600,8 @@ void MainWindow::affMeteoMer()
     ui->labelTitreMer->setText(tr("Conditions Météo en Mer :"));
 
 
-    QString infosRecap = tr("Température :   \n  %1  %2"
-"\n\nPression atmosphérique :   \n  %3  hPa\n\nTaux d'Humidité :   \n  %4  %")
+    QString infosRecap = tr("Température :   \n    %1  %2"
+"\n\nPression atmosphérique :   \n    %3  hPa\n\nTaux d'Humidité :   \n    %4  %")
             .arg(temperature).arg(unit).arg(pression).arg(humidite);
     qDebug()<<infosRecap;
     ui->labelMer->setText(infosRecap);
@@ -588,6 +613,7 @@ void MainWindow::on_action_Administration_triggered()
 {
     FenetreOptions = new DialogOptions("Paramètres",this);
     FenetreOptions->show();
+    connect(FenetreOptions, SIGNAL(modifmode()), this, SLOT(modeaffichage()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affPrevisions()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoville()));
@@ -616,6 +642,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
     else
         event->ignore();
 }
+
+
 
 
 
