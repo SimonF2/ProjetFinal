@@ -10,4 +10,10 @@
         <file>icons/50d_mist.png</file>
         <file>icons/01d_clear_sky.png</file>
     </qresource>
+    <qresource prefix="/pictures">
+        <file>pictures/mer.png</file>
+        <file>pictures/mer_nuit_m.png</file>
+        <file>pictures/bois_h.png</file>
+        <file>pictures/bois_v.png</file>
+    </qresource>
 </RCC>

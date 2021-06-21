@@ -28,11 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    //this->setStyleSheet("border-radius: 5px;");
-    //this->setStyleSheet("background-color: black; border-radius: 5px;");
-
-
-
     //--------------------------------------------------------------------
     //Mise à jour des parametres de MainWindow en fonction de la classe parametres
 
@@ -98,22 +93,87 @@ void MainWindow::setUnite(const QString &value)
 
 void MainWindow::modeaffichage()
 {
+    //MAJ de la police de la fenêtre principale
+
+    QFont font = parametres::getPolice();
+    font.setPointSize(10);
+
+    ui->labelVille->setFont(font);
+    ui->BtnMeteo->setFont(font);
+
+
+
     if (parametres::getMode()=="Jour")
     {
         qDebug()<< "Mode Jour";
-        //this->setStyleSheet("background-color: white; color: black");
-        ui->centralwidget->setStyleSheet("background-color: white; color: black");
-        ui->BtnMeteo->setStyleSheet("background-color: orange; color: grey");
-        ui->lineEditVille->setStyleSheet("color: black");
+
+        ui->centralwidget->setStyleSheet("background-color: rgb(225,211,200); color: black");
+        ui->lineEditVille->setStyleSheet("background-color: white; color: black");
+        ui->labelVille->setStyleSheet("color: black");
+
+        //éléments oranges
+        ui->BtnMeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black; border-radius: 15px");
+        ui->plainTextMeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+        ui->lbliconmeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+        ui->plainTextDate->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+        ui->lblDate->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+        ui->lcdNumber->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+
+        //éléments verts
+        ui->plainTextPrevisions1->setStyleSheet("background-color: rgb(89,255,117); color: black");
+        ui->plainTextPrevisions2->setStyleSheet("background-color: rgb(89,255,117); color: black");
+        ui->plainTextPrevisions3->setStyleSheet("background-color: rgb(89,255,117); color: black");
+        ui->plainTextPrevisions4->setStyleSheet("background-color: rgb(89,255,117); color: black");
+        ui->plainTextPrevisions5->setStyleSheet("background-color: rgb(89,255,117); color: black");
+        ui->iconeJ1->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+        ui->iconeJ2->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+        ui->iconeJ3->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+        ui->iconeJ4->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+        ui->iconeJ5->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+
+        //éléments bleus
+        ui->label->setPixmap(QResource(":/pictures/pictures/mer.png").fileName());
+
+        ui->labelMer->setStyleSheet("background-color: rgb(255,255,255,50); color: black; border-radius: 5px;");
+        ui->labelTitreMer->setStyleSheet("background-color: rgb(255,255,255,50); color: black; border-radius: 5px;");
+        ui->plainTextMer->setStyleSheet("background-color: rgb(93,187,225); color: black");
+
 
     }
     else if (parametres::getMode()=="Nuit")
     {
         qDebug()<< "Mode Nuit";
-        //this->setStyleSheet("background-color: black");
-        ui->centralwidget->setStyleSheet("background-color: black; color: white");
-        ui->BtnMeteo->setStyleSheet("background-color: grey; color: black");
-        ui->lineEditVille->setStyleSheet("background-color: black ");
+
+        ui->centralwidget->setStyleSheet("background-color: rgb(0,0,0)");
+        ui->lineEditVille->setStyleSheet("background-color: black; color: white");
+        ui->labelVille->setStyleSheet("color: white");
+
+        //éléments oranges
+        ui->BtnMeteo->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0); border-radius: 15px");
+        ui->plainTextDate->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0)");
+        ui->lblDate->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0)");
+        ui->lcdNumber->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0)");
+        ui->plainTextMeteo->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0)");
+        ui->lbliconmeteo->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0)");
+
+        //éléments verts
+        ui->plainTextPrevisions1->setStyleSheet("background-color: rgb(25,25,25); color: rgb(89,255,117)");
+        ui->plainTextPrevisions2->setStyleSheet("background-color: rgb(25,25,25); color: rgb(89,255,117)");
+        ui->plainTextPrevisions3->setStyleSheet("background-color: rgb(25,25,25); color: rgb(89,255,117)");
+        ui->plainTextPrevisions4->setStyleSheet("background-color: rgb(25,25,25); color: rgb(89,255,117)");
+        ui->plainTextPrevisions5->setStyleSheet("background-color: rgb(25,25,25); color: rgb(89,255,117)");
+        ui->iconeJ1->setStyleSheet("background-color: rgb(25,25,25,0); color: rgb(89,255,117)");
+        ui->iconeJ2->setStyleSheet("background-color: rgb(25,25,25,0); color: rgb(89,255,117)");
+        ui->iconeJ3->setStyleSheet("background-color: rgb(25,25,25,0); color: rgb(89,255,117)");
+        ui->iconeJ4->setStyleSheet("background-color: rgb(25,25,25,0); color: rgb(89,255,117)");
+        ui->iconeJ5->setStyleSheet("background-color: rgb(25,25,25,0); color: rgb(89,255,117)");
+
+        //éléments bleus
+        ui->label->setPixmap(QResource(":/pictures/pictures/mer_nuit_m.png").fileName());
+        ui->labelMer->setStyleSheet("background-color: rgb(0,0,0,25);color: rgb(93,187,225); border-radius: 5px;");
+        ui->labelTitreMer->setStyleSheet("background-color: rgb(0,0,0,25);color: rgb(93,187,225); border-radius: 5px;");
+        ui->plainTextMer->setStyleSheet("background-color: rgb(75,75,75)");
+
     }
 }
 
@@ -134,13 +194,10 @@ void MainWindow::affHeure()
 
 void MainWindow::affDate()
 {
-    //MAJ de la police de la fenêtre principale
-
-    ui->labelVille->setFont(parametres::getPolice());
-    ui->BtnMeteo->setFont(parametres::getPolice());
-
 
     qDebug() << "MAJ Date";
+
+
     QDateTime Date = QDateTime::currentDateTime();
     QLocale locale;
     QString dateaff;
@@ -465,7 +522,7 @@ void MainWindow::affPrevisions()
 
         //Préaparation du tableau pour affichage dans plusieurs plaintext
 
-            infosRecaptab[indiceresult]=tr("%1 \n\nConditions Météo :     %2 "
+            infosRecaptab[indiceresult]=tr("%1 \n\nConditions Météo :     \n    %2 "
         "\nTempérature :     %3 %4 \nTempérature Ressentie :     %5 %6  ").
                     arg(dateaff).arg(description).
                     arg(temperature).arg(unit).arg(tempressentie).arg(unit);
@@ -521,7 +578,8 @@ void MainWindow::affMeteoMer()
     /**************************************/
     //MAJ de la police de affMeteoville
     QFont font = parametres::getPolice();
-    font.setPointSize(11);
+    font.setPointSize(10);
+    font.setBold(true);
     ui->labelTitreMer->setFont(font);
 
     ui->labelMer->setFont(parametres::getPolice());
@@ -558,7 +616,7 @@ void MainWindow::affMeteoMer()
     QByteArray response_data = reply->readAll();
 
     //qDebug() << "Size: " << response_data.size();
-    //qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
+    qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
 
     //Conversion du ByteArray en Json
     QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
@@ -603,7 +661,7 @@ void MainWindow::affMeteoMer()
     QString infosRecap = tr("Température :   \n    %1  %2"
 "\n\nPression atmosphérique :   \n    %3  hPa\n\nTaux d'Humidité :   \n    %4  %")
             .arg(temperature).arg(unit).arg(pression).arg(humidite);
-    qDebug()<<infosRecap;
+    //qDebug()<<infosRecap;
     ui->labelMer->setText(infosRecap);
 
 

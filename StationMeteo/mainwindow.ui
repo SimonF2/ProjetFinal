@@ -27,9 +27,9 @@
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>89</y>
+      <y>100</y>
       <width>231</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -44,7 +44,17 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);</string>
+     <string notr="true">
+background-color: rgb(255, 170, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>4</number>
     </property>
     <property name="text">
      <string>Date</string>
@@ -62,17 +72,31 @@
    <widget class="QPushButton" name="BtnMeteo">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>700</x>
       <y>320</y>
-      <width>131</width>
-      <height>41</height>
+      <width>181</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="text">
      <string>&amp;Changer de Ville</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -88,7 +112,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);</string>
+     <string notr="true">
+background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -128,7 +153,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -158,18 +183,21 @@
       <height>241</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(93, 187, 225);
 </string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>1</number>
+     <number>4</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -184,159 +212,7 @@
      <bool>true</bool>
     </property>
     <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-    <property name="centerOnScroll">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="Cadre_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>670</y>
-      <width>1001</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(139, 126, 94);
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>5</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="readOnly">
      <bool>true</bool>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-    <property name="centerOnScroll">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="Cadre_4">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1001</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(139, 126, 94);
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>5</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-    <property name="centerOnScroll">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="Cadre_3">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>60</y>
-      <width>61</width>
-      <height>611</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(139, 126, 94);
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>5</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-    <property name="centerOnScroll">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="Cadre_1">
-    <property name="geometry">
-     <rect>
-      <x>940</x>
-      <y>60</y>
-      <width>61</width>
-      <height>611</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(139, 126, 94);
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>5</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
     </property>
     <property name="centerOnScroll">
      <bool>false</bool>
@@ -353,7 +229,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>8</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -415,7 +291,10 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="lineWidth">
      <number>0</number>
@@ -452,7 +331,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="lineWidth">
      <number>0</number>
@@ -489,7 +368,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="lineWidth">
      <number>0</number>
@@ -526,7 +405,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="lineWidth">
      <number>0</number>
@@ -563,7 +442,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="lineWidth">
      <number>0</number>
@@ -584,25 +463,24 @@
    <widget class="QLabel" name="labelTitreMer">
     <property name="geometry">
      <rect>
-      <x>675</x>
-      <y>419</y>
-      <width>241</width>
+      <x>680</x>
+      <y>425</y>
+      <width>231</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(93, 187, 225);
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Conditions Météo en Mer:</string>
@@ -623,20 +501,24 @@
       <x>670</x>
       <y>73</y>
       <width>251</width>
-      <height>121</height>
+      <height>151</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);</string>
+     <string notr="true">
+background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>1</number>
+     <number>4</number>
     </property>
     <property name="midLineWidth">
      <number>0</number>
@@ -648,7 +530,7 @@
      <bool>true</bool>
     </property>
     <property name="backgroundVisible">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="centerOnScroll">
      <bool>false</bool>
@@ -667,8 +549,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(93, 187, 225);
-</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
@@ -684,7 +565,7 @@
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>130</y>
+      <y>150</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -702,16 +583,17 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);</string>
+     <string notr="true">
+background-color: rgb(255, 170, 0);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>0</number>
+     <number>4</number>
     </property>
     <property name="smallDecimalPoint">
      <bool>true</bool>
@@ -733,7 +615,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -773,7 +655,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -813,7 +695,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">
+background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -853,7 +736,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">
+background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -893,7 +777,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 85, 0);</string>
+     <string notr="true">
+background-color: rgb(89, 255, 117);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::WinPanel</enum>
@@ -923,6 +808,145 @@
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>423</y>
+      <width>231</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="weatherinfos.qrc">:/pictures/pictures/mer.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblcadre1">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>58</y>
+      <width>61</width>
+      <height>612</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="lineWidth">
+     <number>3</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="weatherinfos.qrc">:/pictures/pictures/bois_v.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblcadre2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>670</y>
+      <width>1002</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>3</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="weatherinfos.qrc">:/pictures/pictures/bois_h.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblcadre4">
+    <property name="geometry">
+     <rect>
+      <x>-2</x>
+      <y>-1</y>
+      <width>1002</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>3</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="weatherinfos.qrc">:/pictures/pictures/bois_h.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblcadre1_2">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>60</y>
+      <width>61</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="lineWidth">
+     <number>3</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="weatherinfos.qrc">:/pictures/pictures/bois_v.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>plainTextMer</zorder>
+   <zorder>label</zorder>
    <zorder>plainTextPrevisions2</zorder>
    <zorder>plainTextPrevisions1</zorder>
    <zorder>plainTextPrevisions5</zorder>
@@ -934,20 +958,19 @@
    <zorder>iconeJ3</zorder>
    <zorder>iconeJ4</zorder>
    <zorder>iconeJ5</zorder>
-   <zorder>plainTextMer</zorder>
    <zorder>plainTextMeteo</zorder>
    <zorder>lblDate</zorder>
    <zorder>BtnMeteo</zorder>
    <zorder>lbliconmeteo</zorder>
-   <zorder>Cadre_2</zorder>
-   <zorder>Cadre_4</zorder>
-   <zorder>Cadre_3</zorder>
    <zorder>labelVille</zorder>
    <zorder>lineEditVille</zorder>
-   <zorder>Cadre_1</zorder>
    <zorder>labelTitreMer</zorder>
    <zorder>labelMer</zorder>
    <zorder>lcdNumber</zorder>
+   <zorder>lblcadre1</zorder>
+   <zorder>lblcadre2</zorder>
+   <zorder>lblcadre4</zorder>
+   <zorder>lblcadre1_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -987,7 +1010,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="weatherinfos.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>lineEditVille</sender>
