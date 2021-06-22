@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "dialoglangue.h"
-
+#include <QTranslator>
 #include <QApplication>
 #include <QSettings>
+
 
 int main(int argc, char *argv[])
 {
@@ -26,24 +27,38 @@ int main(int argc, char *argv[])
 
     //Traduction
 
-    /*
-    QTranslator translator;
 
-    a.installTranslator(&translator);
-    if (parametres::getLangue()=="English")
-    {
-        translator.load("/traduction/StationMeteo_en.qm");
-    }
-    else
-    {
 
-    }
-    */
+
+      QTranslator translator;
+      a.installTranslator(&translator);
 
     //Ouverture de la première fenêtre de dialogue
 
     Dialoglangue l;
     l.exec();
+
+
+
+
+    if (parametres::getLangue()=="English")
+    {
+        translator.load(":/StationMeteo_en.qm");
+        qDebug() <<"Speaking English right now. ";
+    }
+    else // (parametres::getLangue()=="Français")
+    {
+        translator.load(":/StationMeteo_fr.qm");
+        qDebug() <<"Ca cause Français là. ";
+
+    }
+
+
+
+
+
+
+
 
 
     //ouverture de la fenêtre principale une fois la première fermée

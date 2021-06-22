@@ -15,6 +15,8 @@ SOURCES += \
     mainwindow.cpp \
     parametres.cpp
 
+TRANSLATIONS = StationMeteo_en.ts StationMeteo_fr.ts
+
 HEADERS += \
     dialoglangue.h \
     dialogoptions.h \
@@ -32,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    Traduction_2106.qrc \
     weatherinfos.qrc

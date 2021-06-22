@@ -669,7 +669,7 @@ void MainWindow::affMeteoMer()
 
 void MainWindow::on_action_Administration_triggered()
 {
-    FenetreOptions = new DialogOptions("Paramètres",this);
+    FenetreOptions = new DialogOptions(tr("Paramètres"),this);
     FenetreOptions->show();
     connect(FenetreOptions, SIGNAL(modifmode()), this, SLOT(modeaffichage()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
@@ -687,11 +687,13 @@ void MainWindow::on_action_Quitter_triggered()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     QMessageBox msgBox;
-    msgBox.setWindowTitle("Quitter");
-    msgBox.setText("Vous allez quitter le programme.");
-    msgBox.setInformativeText("Êtes-vous sûr?");
+    msgBox.setWindowTitle(tr("Quitter"));
+    msgBox.setText(tr("Vous allez quitter le programme."));
+    msgBox.setInformativeText(tr("Êtes-vous sûr?"));
     msgBox.setIcon(QMessageBox::Question);
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.button(QMessageBox::Yes)->setText(tr("Oui"));
+    msgBox.button(QMessageBox::No)->setText(tr("Non"));
 
     int reponse = msgBox.exec();
 
