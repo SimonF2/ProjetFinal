@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/new/prefix1"/>
-    <qresource prefix="/">
-        <file>StationMeteo_en.qm</file>
-        <file>StationMeteo_fr.qm</file>
-    </qresource>
-</RCC>
