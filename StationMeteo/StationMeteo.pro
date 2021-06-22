@@ -15,6 +15,8 @@ SOURCES += \
     mainwindow.cpp \
     parametres.cpp
 
+TRANSLATIONS = StationMeteo_en.ts StationMeteo_fr.ts
+
 HEADERS += \
     dialoglangue.h \
     dialogoptions.h \

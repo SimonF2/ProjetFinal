@@ -16,4 +16,8 @@
         <file>pictures/bois_h.png</file>
         <file>pictures/bois_v.png</file>
     </qresource>
+    <qresource prefix="/traduction">
+        <file>StationMeteo_en.qm</file>
+        <file>StationMeteo_fr.qm</file>
+    </qresource>
 </RCC>

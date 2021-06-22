@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "dialoglangue.h"
-
+#include <QTranslator>
 #include <QApplication>
 #include <QSettings>
+
 
 int main(int argc, char *argv[])
 {
@@ -24,26 +25,36 @@ int main(int argc, char *argv[])
     policeChoisie.fromString(policeString);
     parametres::setPolice(policeChoisie);
 
+    //Traduction
+
+
+
+
+      QTranslator translator;
+      a.installTranslator(&translator);
 
     //Ouverture de la première fenêtre de dialogue
+
     Dialoglangue l;
     l.exec();
 
 
-    //Traduction
-    /*
-    QTranslator translator;
 
-    a.installTranslator(&translator);
+
     if (parametres::getLangue()=="English")
     {
-        translator.load("/traduction/StationMeteo_en.qm");
+        translator.load(":/traduction/StationMeteo_en.qm");
+        qDebug() <<"Speaking English right now. ";
     }
-    else
+    else // (parametres::getLangue()=="Français")
     {
-        translator.load("/traduction/StationMeteo_fr.qm");
+        translator.load(":/traduction/StationMeteo_fr.qm");
+        qDebug() <<"Ca cause Français là. ";
+
     }
-    */
+
+
+
 
 
 

@@ -188,7 +188,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Unité des Températures</string>
+    <string>Format des Températures</string>
    </property>
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
