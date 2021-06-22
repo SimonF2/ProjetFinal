@@ -24,8 +24,13 @@ int main(int argc, char *argv[])
     policeChoisie.fromString(policeString);
     parametres::setPolice(policeChoisie);
 
-    //Traduction
 
+    //Ouverture de la première fenêtre de dialogue
+    Dialoglangue l;
+    l.exec();
+
+
+    //Traduction
     /*
     QTranslator translator;
 
@@ -36,14 +41,13 @@ int main(int argc, char *argv[])
     }
     else
     {
-
+        translator.load("/traduction/StationMeteo_fr.qm");
     }
     */
 
-    //Ouverture de la première fenêtre de dialogue
 
-    Dialoglangue l;
-    l.exec();
+
+
 
 
     //ouverture de la fenêtre principale une fois la première fermée
