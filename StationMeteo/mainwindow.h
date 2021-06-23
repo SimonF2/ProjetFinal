@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QCloseEvent>
 #include <QLabel>
+#include <QTranslator>
 
 #include "dialogoptions.h"
 #include "parametres.h"
@@ -18,7 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QTranslator* translator,QWidget *parent = nullptr);
     ~MainWindow();
 
 
@@ -44,6 +45,7 @@ private slots:
     void affMeteoMer();
     void affMeteoville();
     void affPrevisions();
+    void traduction();
     void on_action_Administration_triggered();
     void on_action_Quitter_triggered();
     void on_BtnMeteo_clicked(); //équivalent set ville
@@ -57,6 +59,7 @@ private:
     QString langue;
     QTimer* timer; //Declenche un traitement à intervalle régulier
     QTimer* timerRasp;
+    QTranslator* traducteur;
 
 
 };

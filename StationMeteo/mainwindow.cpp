@@ -18,13 +18,18 @@
 
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QTranslator* pttranslator, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
 
     ui->setupUi(this);
     this->setWindowTitle(tr("Station Météo"));
+
+
+    this->traducteur=pttranslator;
+
+
 
 
 
@@ -59,8 +64,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(affHeure())); // Affiche l'heure toutes les secondes
 
     //Affichage des 3 Météos avec maj toutes les 5min
-    //affMeteoville();
-    //affPrevisions();
+    affMeteoville();
+    affPrevisions();
     affMeteoMer();
     timerRasp = new QTimer();
     timerRasp->setInterval(300000); //5min=300000 msec
@@ -91,6 +96,14 @@ void MainWindow::setUnite(const QString &value)
     unite = value;
 }
 
+void MainWindow::traduction()
+{
+    ui->retranslateUi(this);
+    affDate();
+    affMeteoMer();
+}
+
+
 void MainWindow::modeaffichage()
 {
     //MAJ de la police de la fenêtre principale
@@ -112,31 +125,31 @@ void MainWindow::modeaffichage()
         ui->labelVille->setStyleSheet("color: black");
 
         //éléments oranges
-        ui->BtnMeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black; border-radius: 15px");
-        ui->plainTextMeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
-        ui->lbliconmeteo->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
-        ui->plainTextDate->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
-        ui->lblDate->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
-        ui->lcdNumber->setStyleSheet("background-color: rgb(255, 170, 0); color: black");
+        ui->BtnMeteo->setStyleSheet("background-color: #07575B; color: #DFF0D8; border-radius: 15px");
+        ui->plainTextMeteo->setStyleSheet("background-color: #07575B; color: #DFF0D8");
+        ui->lbliconmeteo->setStyleSheet("background-color: #07575B; color: #DFF0D8");
+        ui->plainTextDate->setStyleSheet("background-color: #07575B; color: #DFF0D8");
+        ui->lblDate->setStyleSheet("background-color: #07575B; color: #DFF0D8");
+        ui->lcdNumber->setStyleSheet("background-color: #07575B; color: #DFF0D8");
 
         //éléments verts
-        ui->plainTextPrevisions1->setStyleSheet("background-color: rgb(89,255,117); color: black");
-        ui->plainTextPrevisions2->setStyleSheet("background-color: rgb(89,255,117); color: black");
-        ui->plainTextPrevisions3->setStyleSheet("background-color: rgb(89,255,117); color: black");
-        ui->plainTextPrevisions4->setStyleSheet("background-color: rgb(89,255,117); color: black");
-        ui->plainTextPrevisions5->setStyleSheet("background-color: rgb(89,255,117); color: black");
-        ui->iconeJ1->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
-        ui->iconeJ2->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
-        ui->iconeJ3->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
-        ui->iconeJ4->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
-        ui->iconeJ5->setStyleSheet("background-color: rgb(89,255,117,0); color: black");
+        ui->plainTextPrevisions1->setStyleSheet("background-color: #66A5AD; color: white");
+        ui->plainTextPrevisions2->setStyleSheet("background-color: #66A5AD; color: white");
+        ui->plainTextPrevisions3->setStyleSheet("background-color: #66A5AD; color: white");
+        ui->plainTextPrevisions4->setStyleSheet("background-color: #66A5AD; color: white");
+        ui->plainTextPrevisions5->setStyleSheet("background-color: #66A5AD; color: white");
+        ui->iconeJ1->setStyleSheet("background-color: rgb(102,165,173,0); color: white");
+        ui->iconeJ2->setStyleSheet("background-color: rgb(102,165,173,0); color: white");
+        ui->iconeJ3->setStyleSheet("background-color: rgb(102,165,173,0); color: white");
+        ui->iconeJ4->setStyleSheet("background-color: rgb(102,165,173,0); color: white");
+        ui->iconeJ5->setStyleSheet("background-color: rgb(102,165,173,0); color: white");
 
         //éléments bleus
         ui->label->setPixmap(QResource(":/pictures/pictures/mer.png").fileName());
 
         ui->labelMer->setStyleSheet("background-color: rgb(255,255,255,50); color: black; border-radius: 5px;");
         ui->labelTitreMer->setStyleSheet("background-color: rgb(255,255,255,50); color: black; border-radius: 5px;");
-        ui->plainTextMer->setStyleSheet("background-color: rgb(93,187,225); color: black");
+        ui->plainTextMer->setStyleSheet("background-color: #C4DFE6; color: black");
 
 
     }
@@ -146,7 +159,7 @@ void MainWindow::modeaffichage()
 
         ui->centralwidget->setStyleSheet("background-color: rgb(0,0,0)");
         ui->lineEditVille->setStyleSheet("background-color: black; color: white");
-        ui->labelVille->setStyleSheet("color: white");
+        ui->labelVille->setStyleSheet("color: #C4DFE6");
 
         //éléments oranges
         ui->BtnMeteo->setStyleSheet("background-color: rgb(50,50,50); color: rgb(255, 170, 0); border-radius: 15px");
@@ -170,8 +183,8 @@ void MainWindow::modeaffichage()
 
         //éléments bleus
         ui->label->setPixmap(QResource(":/pictures/pictures/mer_nuit_m.png").fileName());
-        ui->labelMer->setStyleSheet("background-color: rgb(0,0,0,25);color: rgb(93,187,225); border-radius: 5px;");
-        ui->labelTitreMer->setStyleSheet("background-color: rgb(0,0,0,25);color: rgb(93,187,225); border-radius: 5px;");
+        ui->labelMer->setStyleSheet("background-color: rgb(0,0,0,25);color: #C4DFE6; border-radius: 5px;");
+        ui->labelTitreMer->setStyleSheet("background-color: rgb(0,0,0,25);color: #C4DFE6; border-radius: 5px;");
         ui->plainTextMer->setStyleSheet("background-color: rgb(75,75,75)");
 
     }
@@ -190,6 +203,7 @@ void MainWindow::affHeure()
        ui->lcdNumber->setDigitCount(11);
        ui->lcdNumber->display(parametres::getHeure());
    }
+
 }
 
 void MainWindow::affDate()
@@ -225,6 +239,7 @@ void MainWindow::affDate()
 
     /**************************************/
     ui->lblDate->setText(dateaff);
+
 }
 
 void MainWindow::affMeteoville()
@@ -570,6 +585,7 @@ void MainWindow::affPrevisions()
 
 }
 
+
 void MainWindow::affMeteoMer()
 {
 
@@ -669,14 +685,14 @@ void MainWindow::affMeteoMer()
 
 void MainWindow::on_action_Administration_triggered()
 {
-    FenetreOptions = new DialogOptions(tr("Paramètres"),this);
+    FenetreOptions = new DialogOptions(traducteur,tr("Paramètres"),this);
     FenetreOptions->show();
     connect(FenetreOptions, SIGNAL(modifmode()), this, SLOT(modeaffichage()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affDate()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affPrevisions()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoville()));
     connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(affMeteoMer()));
-
+    connect(FenetreOptions, SIGNAL(modifparam()), this, SLOT(traduction()));
 }
 
 void MainWindow::on_action_Quitter_triggered()

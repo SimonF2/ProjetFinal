@@ -10,7 +10,7 @@
 #include <QFontDialog>
 #include <QSettings>
 
-DialogOptions::DialogOptions(QString texte,QWidget *parent) :
+DialogOptions::DialogOptions(QTranslator* pttranslator,QString texte,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DialogOptions)
 {
@@ -21,6 +21,12 @@ DialogOptions::DialogOptions(QString texte,QWidget *parent) :
         this->setWindowTitle(texte);
     }
 
+    this->trad=pttranslator;
+
+
+    //--------------------------------------------------------------------
+    //Mise à jour affichage Dialogoptions en fonction de la classe parametres
+
     if (parametres::getMode()=="Nuit")
         ui->rdBtnNuit->setChecked(true);
     if (parametres::getFormat24Heure()==false)
@@ -30,7 +36,10 @@ DialogOptions::DialogOptions(QString texte,QWidget *parent) :
     if (parametres::getLangue()=="English")
         ui->comboBoxLangue->setCurrentText("English");
 
-
+    if (ui->comboBoxLangue->currentText()=="English")
+        this->setWindowTitle("Settings");
+    else
+        this->setWindowTitle("Paramètres");
 
 
     affHeure();
@@ -72,7 +81,31 @@ void DialogOptions::on_rdBtn24_clicked()
 void DialogOptions::on_comboBoxLangue_currentTextChanged(const QString &arg1)
 {
     parametres::setLangue(arg1);
+
+
+
+    if (parametres::getLangue()=="English")
+    {
+        trad->load(":/traduction/StationMeteo_en.qm");
+    }
+    else // (parametres::getLangue()=="Français")
+    {
+        trad->load(":/traduction/StationMeteo_fr.qm");
+    }
+
+
+    ui->retranslateUi(this);
+
+    // Eléments liés à des erreurs ou des oublis dans la traduction
+    ui->rdBtnFar->setText("Fahrenheit");
+
+    if (ui->comboBoxLangue->currentText()=="English")
+        this->setWindowTitle("Settings");
+    else
+        this->setWindowTitle("Paramètres");
+
     emit modifparam();
+
 }
 
 
@@ -133,10 +166,6 @@ void DialogOptions::on_buttonBox_accepted()
     maConfig.setValue("Mode", parametres::getMode());
 
     qDebug()<<"Paramètres enregistrés";
-
-
-    //parentWidget()->setFont(parametres::getPolice());
-
 
 
 }

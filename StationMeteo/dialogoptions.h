@@ -4,6 +4,7 @@
 #include "parametres.h"
 #include <QDialog>
 #include <QTimer>
+#include <QTranslator>
 
 
 namespace Ui {
@@ -15,7 +16,7 @@ class DialogOptions : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogOptions(QString,QWidget *parent);
+    explicit DialogOptions(QTranslator*,QString,QWidget *parent);
     ~DialogOptions();
 
 signals:
@@ -46,6 +47,7 @@ private slots:
 private:
     Ui::DialogOptions *ui;
     QTimer* timer;
+    QTranslator* trad;
 };
 
 #endif // DIALOGOPTIONS_H

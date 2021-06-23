@@ -24,6 +24,7 @@ private slots:
 private:
     Ui::Dialoglangue *ui;
 
+
 };
 
 #endif // DIALOGLANGUE_H

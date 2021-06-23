@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
 
 
 
-      QTranslator translator;
-      a.installTranslator(&translator);
+     QTranslator translator;
+     a.installTranslator(&translator);
 
     //Ouverture de la première fenêtre de dialogue
 
@@ -44,18 +44,13 @@ int main(int argc, char *argv[])
     if (parametres::getLangue()=="English")
     {
         translator.load(":/traduction/StationMeteo_en.qm");
-        qDebug() <<"Speaking English right now. ";
+        //qDebug() <<"Speaking English right now. ";
     }
     else // (parametres::getLangue()=="Français")
     {
         translator.load(":/traduction/StationMeteo_fr.qm");
-        qDebug() <<"Ca cause Français là. ";
-
+        //qDebug() <<"Ca cause Français là. ";
     }
-
-
-
-
 
 
 
@@ -63,7 +58,7 @@ int main(int argc, char *argv[])
 
     //ouverture de la fenêtre principale une fois la première fermée
 
-    MainWindow w;
+    MainWindow w(&translator);
     w.show();
 
     return a.exec();
