@@ -269,7 +269,7 @@ background-color: rgb(255, 170, 0);</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Paris</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="iconeJ1">

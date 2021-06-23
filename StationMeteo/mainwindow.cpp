@@ -48,8 +48,11 @@ MainWindow::MainWindow(QTranslator* pttranslator, QWidget *parent)
     else if (parametres::getLangue()=="English")
         setLangue("en");
 
-    qDebug()<<"langue Mainwindow suite MAJ via parametres:"<<getLangue();
-    qDebug()<<"unite Mainwindow suite MAJ via parametres:"<<getUnite();
+    setVilleSelec(parametres::getVille());
+    ui->lineEditVille->setText(getVilleSelec());
+
+    //qDebug()<<"langue Mainwindow suite MAJ via parametres:"<<getLangue();
+    //qDebug()<<"unite Mainwindow suite MAJ via parametres:"<<getUnite();
     //--------------------------------------------------------------------
 
     //Affichage en fonction du mode choisi
@@ -392,11 +395,23 @@ void MainWindow::on_BtnMeteo_clicked()
 {
 
     if (ui->lineEditVille->text()!="")
+    {
         villeSelec=ui->lineEditVille->text();
+        parametres::setVille(ui->lineEditVille->text());
+    }
 
     affMeteoville();
     affPrevisions();
 
+    parametres::setVille(ui->lineEditVille->text());
+    QSettings maConfig("parametres.ini", QSettings::IniFormat);
+    maConfig.setValue("Ville", parametres::getVille());
+
+}
+
+void MainWindow::setVilleSelec(const QString &value)
+{
+    villeSelec = value;
 }
 
 void MainWindow::affPrevisions()
@@ -594,7 +609,6 @@ void MainWindow::affPrevisions()
     }
 
 }
-
 
 void MainWindow::affMeteoMer()
 {

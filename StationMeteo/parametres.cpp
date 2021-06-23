@@ -9,6 +9,7 @@ QString parametres::langue = "Français";
 QFont parametres::police("MS Shell Dlg 2",8,-1, false);
 QString parametres::unite = "Celsius";
 QString parametres::mode = "Jour";
+QString parametres::ville = "Paris";
 
 parametres::parametres()
 {
@@ -89,6 +90,16 @@ void parametres::setMode(const QString &value)
         mode = value;
 
     qDebug()<<"Changement Mode parametres:"<<getMode();
+}
+
+QString parametres::getVille()
+{
+    return ville;
+}
+
+void parametres::setVille(const QString &value)
+{
+    ville = value;
 }
 
 

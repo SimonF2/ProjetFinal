@@ -31,7 +31,7 @@ public:
     QString getUnite() const {return unite;}
     QString getLangue() const {return langue;}
     QString getVilleSelec() const {return villeSelec;}
-
+    void setVilleSelec(const QString &value);
 
 protected:
     void closeEvent(QCloseEvent *event);

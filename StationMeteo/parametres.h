@@ -28,12 +28,17 @@ public:
     static QString getMode();
     static void setMode(const QString &value);
 
+    static QString getVille();
+    static void setVille(const QString &value);
+
 private:
     static bool format24Heure;
     static QString langue;
     static QFont police;
     static QString unite;
     static QString mode;
+    static QString ville;
+
 };
 
 #endif // PARAMETRES_H

@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
     parametres::setFormatHeure(maConfig.value("FormatHeure").toBool());
     parametres::setUnite(maConfig.value("Unite").toString());
     parametres::setLangue(maConfig.value("Langue").toString());
+    parametres::setVille(maConfig.value("Ville").toString());
+
 
     QString policeString = maConfig.value("Police").toString();
     //qDebug() << "Police recue du fichier ini:"<<policeString;
@@ -26,9 +28,6 @@ int main(int argc, char *argv[])
     parametres::setPolice(policeChoisie);
 
     //Traduction
-
-
-
 
      QTranslator translator;
      a.installTranslator(&translator);
