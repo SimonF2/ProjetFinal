@@ -41,6 +41,8 @@ DialogOptions::DialogOptions(QTranslator* pttranslator,QString texte,QWidget *pa
     else
         this->setWindowTitle("Paramètres");
 
+    //ajout suite à erreur dans la traduction
+    ui->rdBtnFar->setText("Fahrenheit");
 
     affHeure();
     timer = new QTimer();

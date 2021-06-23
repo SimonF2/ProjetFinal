@@ -24,12 +24,14 @@ MainWindow::MainWindow(QTranslator* pttranslator, QWidget *parent)
 {
 
     ui->setupUi(this);
-    this->setWindowTitle(tr("Station Météo"));
+
+    if (parametres::getLangue()=="English")
+        this->setWindowTitle("Weather Station");
+    else
+        this->setWindowTitle("Station Météo");
 
 
     this->traducteur=pttranslator;
-
-
 
 
 
@@ -99,10 +101,19 @@ void MainWindow::setUnite(const QString &value)
 void MainWindow::traduction()
 {
     ui->retranslateUi(this);
+
+    if (parametres::getLangue()=="English")
+        this->setWindowTitle("Weather Station");
+    else
+        this->setWindowTitle("Station Météo");
+
+
+    //ajout car n'apparait pas sinon
     affDate();
     affMeteoMer();
-}
 
+
+}
 
 void MainWindow::modeaffichage()
 {
@@ -189,7 +200,6 @@ void MainWindow::modeaffichage()
 
     }
 }
-
 
 void MainWindow::affHeure()
 {
@@ -597,6 +607,8 @@ void MainWindow::affMeteoMer()
     font.setPointSize(10);
     font.setBold(true);
     ui->labelTitreMer->setFont(font);
+    ui->BtnMeteo->setFont(font);
+    ui->labelVille->setFont(font);
 
     ui->labelMer->setFont(parametres::getPolice());
 
