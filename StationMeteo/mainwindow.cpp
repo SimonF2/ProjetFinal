@@ -308,23 +308,11 @@ void MainWindow::affMeteoville()
 
     QString ville=jsonObject["name"].toString().toUpper();
 
-
-
     //On se positionne sur le tableau "weather"
     QJsonArray weather = jsonObject["weather"].toArray();
 
     QString description;
     QString codeIcon;
-
-    QString unit;
-    if (parametres::getUnite()=="Celsius")
-    {
-        unit= "°C";
-    }
-    if (parametres::getUnite()=="Fahrenheit")
-    {
-        unit= "°F";
-    }
 
 
     foreach(const QJsonValue &value, weather)
@@ -341,8 +329,6 @@ void MainWindow::affMeteoville()
 
     //On se positionne sur l'objet "main"
     QJsonObject infos = jsonObject["main"].toObject();
-    //qDebug()<<infos.count();
-    //qDebug()<<infos.keys();
 
     double temp=infos["temp"].toDouble();
     QString temperature=QString::number(temp);
@@ -353,8 +339,21 @@ void MainWindow::affMeteoville()
     double hum=infos["humidity"].toDouble();
     QString humidite=QString::number(hum);
 
+    //qDebug()<<infos.count();
+    //qDebug()<<infos.keys();
 
     //concaténation et affichage des infos
+
+    QString unit;
+    if (parametres::getUnite()=="Celsius")
+    {
+        unit= "°C";
+    }
+    if (parametres::getUnite()=="Fahrenheit")
+    {
+        unit= "°F";
+    }
+
 
     QString infosRecap = tr("%1 \n\nConditions Météo :   \n    %2 "
 "\nTempérature :   \n    %3  %4\nTempérature Ressentie :   \n    %5  %6"
@@ -398,14 +397,13 @@ void MainWindow::on_BtnMeteo_clicked()
     {
         villeSelec=ui->lineEditVille->text();
         parametres::setVille(ui->lineEditVille->text());
+        QSettings maConfig("parametres.ini", QSettings::IniFormat);
+        maConfig.setValue("Ville", parametres::getVille());
     }
 
     affMeteoville();
     affPrevisions();
 
-    parametres::setVille(ui->lineEditVille->text());
-    QSettings maConfig("parametres.ini", QSettings::IniFormat);
-    maConfig.setValue("Ville", parametres::getVille());
 
 }
 
@@ -440,6 +438,7 @@ void MainWindow::affPrevisions()
 
 
 
+
     QString villeSelec = getVilleSelec();
     QString unite = getUnite();
     QString langue = getLangue();
@@ -468,6 +467,15 @@ void MainWindow::affPrevisions()
     //On se positionne sur l'objet principal
     QJsonObject jsonObject = jsonResponse.object();
 
+    QString unit;
+    if (parametres::getUnite()=="Celsius")
+    {
+        unit= " °C ";
+    }
+    if (parametres::getUnite()=="Fahrenheit")
+    {
+        unit= " °F ";
+    }
 
     //On se positionne sur le tableau "List"
     QJsonArray Liste = jsonObject["list"].toArray();
@@ -481,20 +489,7 @@ void MainWindow::affPrevisions()
     QString description;
 
     QString codeIcon [5];
-
     QString infosRecaptab [5];
-
-
-    QString unit;
-    if (parametres::getUnite()=="Celsius")
-    {
-        unit= " °C ";
-    }
-    if (parametres::getUnite()=="Fahrenheit")
-    {
-        unit= " °F ";
-    }
-
 
     int indiceresult=0;
 
@@ -507,18 +502,14 @@ void MainWindow::affPrevisions()
         QLocale locale;
         QString dateaff;
 
-
         //qDebug()<<dateconv.toString("dddd dd MMMM '15H'");
-
 
         QDateTime Date = QDateTime::currentDateTime();
         QString date=Date.toString("yyyy-MM-dd");
 
-        if (dt_txt.contains(" 15:00:00"))//&&!dt_txt.contains(date))
+        if (dt_txt.contains(" 15:00:00"))                                               //&&!dt_txt.contains(date))
 
         {
-
-
             //on se positionne sur l'objet main
             QJsonObject main=obj["main"].toObject();
             //qDebug()<<"main count"<<main.count();
@@ -658,7 +649,7 @@ void MainWindow::affMeteoMer()
     QByteArray response_data = reply->readAll();
 
     //qDebug() << "Size: " << response_data.size();
-    qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
+    //qDebug() <<"responsedata"<< QString::fromStdString(response_data.toStdString());
 
     //Conversion du ByteArray en Json
     QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
@@ -666,9 +657,6 @@ void MainWindow::affMeteoMer()
     //On se positionne sur l'objet principal
     QJsonObject jsonObject = jsonResponse.object();
 
-    //qDebug() << jsonObject.value("sensor").toString();
-    //qDebug() << jsonObject["sensor"].toString();
-    //qDebug() << jsonObject.keys();
 
     double temp=0;
     if (parametres::getUnite()=="Celsius")
